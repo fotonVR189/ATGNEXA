@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop Robotics, VR & Technology | ATGNEXA</title>
+
+    <meta name="description"
+        content="Explore robotics kits, VR learning solutions and technology products for schools, institutions and innovators at ATGNEXA by Avinya Techno Group.">
+
+    <meta name="theme-color" content="#0B0F19">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0B0F19;
+            --bg-light: #111827;
+            --card: rgba(17, 24, 39, 0.78);
+            --text: #F3F4F6;
+            --muted: #9CA3AF;
+            --cyan: #00A8FF;
+            --red: #E60023;
+            --border: rgba(255, 255, 255, 0.10);
+            --green: #22C55E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--cyan), #8B5CF6, #FF4D6D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 21px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(110deg, var(--cyan), #2563EB 55%, var(--red));
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .gradient-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 168, 255, 0.22);
+        }
+
+        .outline-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border: 1px solid rgba(0, 168, 255, 0.5);
+            border-radius: 10px;
+            color: var(--text);
+            background: rgba(0, 168, 255, 0.05);
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .outline-button:hover {
+            background: rgba(0, 168, 255, 0.13);
+            border-color: var(--cyan);
+        }
+
+        /* Header */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.88);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            min-height: 78px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-subtitle {
+            display: block;
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.8px;
+            margin-top: -5px;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .desktop-nav > a:not(.gradient-button) {
+            font-size: 13px;
+            font-weight: 600;
+            color: #D1D5DB;
+            transition: color 0.2s ease;
+        }
+
+        .desktop-nav > a:not(.gradient-button):hover,
+        .desktop-nav > a.active {
+            color: var(--cyan);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-nav-button {
+            position: relative;
+            padding: 10px 13px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 21px;
+            height: 21px;
+            margin-left: 4px;
+            border-radius: 50px;
+            background: var(--red);
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 43px;
+            height: 43px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            color: white;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            padding: 8px 4% 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .mobile-nav.open {
+            display: grid;
+            gap: 4px;
+        }
+
+        .mobile-nav a {
+            padding: 12px;
+            color: #D1D5DB;
+            border-radius: 8px;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(0, 168, 255, 0.08);
+            color: var(--cyan);
+        }
+
+        /* Hero */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 82px 0 64px;
+            background:
+                linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.97)),
+                linear-gradient(rgba(0, 168, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 168, 255, 0.08) 1px, transparent 1px);
+            background-size: auto, 42px 42px, 42px 42px;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: 0.22;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            top: -100px;
+            left: -100px;
+            background: var(--cyan);
+        }
+
+        .hero::after {
+            right: -100px;
+            bottom: -130px;
+            background: var(--red);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(0, 168, 255, 0.07);
+            color: #7DD3FC;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(36px, 5.5vw, 62px);
+            line-height: 1.15;
+            letter-spacing: -1.8px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 690px;
+            margin: 0 auto;
+            color: #B6C0D0;
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 42px;
+        }
+
+        .hero-stat {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .hero-stat strong {
+            display: block;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        /* Categories */
+
+        .categories {
+            padding: 32px 0 15px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--card);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 168, 255, 0.55);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 15px;
+            border-radius: 13px;
+            background: rgba(0, 168, 255, 0.12);
+            font-size: 24px;
+        }
+
+        .category-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .category-card p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 13px;
+        }
+
+        .category-card a {
+            color: #7DD3FC;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* Product section */
+
+        .products-section {
+            padding: 76px 0 85px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .section-kicker {
+            color: var(--cyan);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(27px, 3.5vw, 39px);
+            line-height: 1.25;
+        }
+
+        .section-heading p {
+            max-width: 500px;
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filter-button {
+            padding: 9px 17px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.035);
+            color: #CBD5E1;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            border-color: var(--cyan);
+            background: rgba(0, 168, 255, 0.12);
+            color: #7DD3FC;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .product-card {
+            position: relative;
+            min-width: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: linear-gradient(150deg, rgba(20, 29, 46, 0.95), rgba(12, 17, 29, 0.98));
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 168, 255, 0.48);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.22);
+        }
+
+        .product-image {
+            position: relative;
+            height: 225px;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 50% 40%, rgba(0, 168, 255, 0.11), transparent 65%),
+                #111827;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 18px;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.045);
+        }
+
+        .image-placeholder {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 13px;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            padding: 6px 10px;
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(11, 15, 25, 0.88);
+            color: #7DD3FC;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .product-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 21px;
+        }
+
+        .product-category {
+            color: var(--cyan);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .product-body h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            line-height: 1.45;
+            margin-bottom: 9px;
+        }
+
+        .product-description {
+            min-height: 48px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 19px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .product-price small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .add-cart-button {
+            padding: 10px 13px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(110deg, var(--cyan), #2563EB);
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .add-cart-button:hover {
+            box-shadow: 0 5px 20px rgba(0, 168, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .empty-products {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 10px;
+        }
+
+        /* CTA */
+
+        .cta-section {
+            padding: 0 0 80px;
+        }
+
+        .cta-card {
+            position: relative;
+            overflow: hidden;
+            padding: 42px;
+            border: 1px solid rgba(0, 168, 255, 0.25);
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 100% 0%, rgba(230, 0, 35, 0.14), transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(0, 168, 255, 0.16), transparent 45%),
+                #111827;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .cta-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(23px, 3vw, 33px);
+            margin-bottom: 9px;
+        }
+
+        .cta-card p {
+            color: var(--muted);
+            max-width: 650px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 38px 0 22px;
+            background: rgba(5, 8, 15, 0.45);
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 28px;
+        }
+
+        .footer-brand {
+            max-width: 370px;
+        }
+
+        .footer-brand p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            margin: 8px 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            color: #778196;
+            font-size: 11px;
+        }
+
+        /* Cart overlay and drawer */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1998;
+            background: rgba(0, 0, 0, 0.68);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.25s ease;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            z-index: 1999;
+            top: 0;
+            right: 0;
+            width: min(440px, 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #0F172A;
+            border-left: 1px solid var(--border);
+            transform: translateX(105%);
+            transition: transform 0.3s ease;
+        }
+
+        .cart-drawer.open {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 21px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 19px;
+        }
+
+        .close-cart {
+            width: 37px;
+            height: 37px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 17px;
+        }
+
+        .cart-empty {
+            padding: 65px 15px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .cart-empty-icon {
+            font-size: 42px;
+            margin-bottom: 13px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 70px minmax(0, 1fr);
+            gap: 13px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #111827;
+        }
+
+        .cart-item h4 {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #7DD3FC;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control button {
+            width: 27px;
+            height: 27px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+        }
+
+        .quantity-control span {
+            min-width: 12px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .remove-item {
+            border: none;
+            background: transparent;
+            color: #FB7185;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 7px;
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        .cart-note {
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 15px;
+        }
+
+        .checkout-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(110deg, var(--cyan), #2563EB 60%, var(--red));
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .checkout-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .continue-shopping {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .toast {
+            position: fixed;
+            z-index: 2500;
+            right: 20px;
+            bottom: 20px;
+            max-width: calc(100% - 40px);
+            padding: 13px 18px;
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            border-radius: 10px;
+            background: #10251B;
+            color: #BBF7D0;
+            font-size: 13px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: 0.25s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1050px) {
+            .desktop-nav {
+                gap: 14px;
+            }
+
+            .desktop-nav > a:not(.gradient-button) {
+                font-size: 12px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 780px) {
+            .nav-container {
+                min-height: 70px;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: inline-grid;
+                place-items: center;
+            }
+
+            .brand img {
+                width: 39px;
+                height: 39px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .hero {
+                padding: 64px 0 48px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-card {
+                padding: 20px;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .cta-card {
+                display: block;
+                padding: 28px;
+            }
+
+            .cta-card .gradient-button {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .container {
+                width: 91%;
+            }
+
+            .nav-actions {
+                gap: 7px;
+            }
+
+            .cart-nav-button {
+                padding: 9px 10px;
+                font-size: 12px;
+            }
+
+            .brand {
+                gap: 7px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .brand-subtitle {
+                font-size: 8px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .hero-stats {
+                gap: 18px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+
+            .product-description {
+                min-height: auto;
+            }
+
+            .products-section {
+                padding: 58px 0;
+            }
+
+            .footer-main {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="index.html" class="brand" aria-label="ATGNEXA home">
+                <img src="assets/logo.png" alt="Avinya Techno Group logo"
+                    onerror="this.style.display='none'">
+
+                <span>
+                    <span class="brand-name gradient-text">ATGNEXA</span>
+                    <span class="brand-subtitle">by Avinya Techno Group</span>
+                </span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="fotonvr.html">fotonVR</a>
+                <a href="robotics.html">Robotics</a>
+                <a href="it-accessories.html">IT Accessories</a>
+                <a href="contact.html">Contact</a>
+                <a href="shop.html" class="active">Shop</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="cart-nav-button" onclick="openCart()" aria-label="Open shopping cart">
+                    🛒 Cart <span class="cart-count" id="headerCartCount">0</span>
+                </button>
+
+                <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <a href="index.html">Home</a>
+            <a href="fotonvr.html">fotonVR</a>
+            <a href="robotics.html">Robotics</a>
+            <a href="it-accessories.html">IT Accessories</a>
+            <a href="contact.html">Contact</a>
+            <a href="shop.html">Shop All Products</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    THE ATGNEXA STORE
+                </div>
+
+                <h1>
+                    Technology for<br>
+                    <span class="gradient-text">Learning & Innovation</span>
+                </h1>
+
+                <p>
+                    Explore robotics kits, immersive VR learning solutions and
+                    technology products designed to support schools, educational
+                    institutions, laboratories and future-ready innovators.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#products" class="gradient-button">Explore Products <span>→</span></a>
+                    <a href="contact.html" class="outline-button">Request a Quote</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <strong>Robotics</strong>
+                        Hands-on innovation
+                    </div>
+                    <div class="hero-stat">
+                        <strong>fotonVR</strong>
+                        Immersive learning
+                    </div>
+                    <div class="hero-stat">
+                        <strong>Technology</strong>
+                        Tools & accessories
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CATEGORY CARDS -->
+        <section class="categories">
+            <div class="container">
+                <div class="category-grid">
+
+                    <article class="category-card">
+                        <div class="category-icon">🤖</div>
+                        <h3>Robotics Kits</h3>
+                        <p>Explore robotics kits for practical learning, coding and school innovation labs.</p>
+                        <a href="#robotics">Explore Robotics →</a>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-icon">🥽</div>
+                        <h3>fotonVR Solutions</h3>
+                        <p>Discover immersive virtual reality learning solutions for educational institutions.</p>
+                        <a href="#vr">Explore fotonVR →</a>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-icon">🛠️</div>
+                        <h3>IT Accessories</h3>
+                        <p>Browse tools and accessories for 3D printing and technology workspaces.</p>
+                        <a href="it-accessories.html">Explore Accessories →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products-section" id="products">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <div class="section-kicker">OUR COLLECTION</div>
+                        <h2>Shop <span class="gradient-text">Featured Products</span></h2>
+                        <p>
+                            Find technology solutions for hands-on learning,
+                            immersive classrooms and robotics laboratories.
+                        </p>
+                    </div>
+
+                    <a href="contact.html" class="outline-button">Need Help? Contact Us</a>
+                </div>
+
+                <div class="filter-row" aria-label="Filter products">
+                    <button class="filter-button active" data-filter="all">All Products</button>
+                    <button class="filter-button" data-filter="robotics">Robotics</button>
+                    <button class="filter-button" data-filter="vr">fotonVR</button>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+
+                    <!-- PRODUCT 1 -->
+                    <article class="product-card" data-category="robotics">
+                        <div class="product-image">
+                            <span class="product-tag">Robotics</span>
+                            <img src="assets/images/robotics-kit.jpg"
+                                alt="AI Robotics Starter Kit"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">🤖<br>AI Robotics Starter Kit</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">AI & Robotics</div>
+                            <h3>AI Robotics Starter Kit</h3>
+                            <p class="product-description">
+                                An introductory kit for hands-on robotics,
+                                basic programming and STEM learning activities.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹24,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('robotics-starter', 'AI Robotics Starter Kit', 24999, 'assets/images/robotics-kit.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCT 2 -->
+                    <article class="product-card" data-category="robotics">
+                        <div class="product-image">
+                            <span class="product-tag">Advanced</span>
+                            <img src="assets/images/robotics-advanced.jpg"
+                                alt="Advanced Robotics Kit"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">⚙️<br>Advanced Robotics Kit</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">AI & Robotics</div>
+                            <h3>Advanced Robotics Kit</h3>
+                            <p class="product-description">
+                                An advanced learning kit for robotics projects,
+                                electronics, automation and coding practice.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹39,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('robotics-advanced', 'Advanced Robotics Kit', 39999, 'assets/images/robotics-advanced.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCT 3 -->
+                    <article class="product-card" data-category="robotics">
+                        <div class="product-image">
+                            <span class="product-tag">For Schools</span>
+                            <img src="assets/images/robotics-lab.jpg"
+                                alt="School Robotics Lab Kit"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">🏫<br>School Robotics Lab Kit</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">Robotics Lab</div>
+                            <h3>School Robotics Lab Kit</h3>
+                            <p class="product-description">
+                                A robotics lab solution for schools planning
+                                structured hands-on STEM and innovation activities.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹74,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('robotics-lab', 'School Robotics Lab Kit', 74999, 'assets/images/robotics-lab.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCT 4 -->
+                    <article class="product-card" data-category="vr">
+                        <div class="product-image">
+                            <span class="product-tag">VR Learning</span>
+                            <img src="assets/images/fotonvr-headset.jpg"
+                                alt="VR Headset"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">🥽<br>VR Headset</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">fotonVR</div>
+                            <h3>VR Headset</h3>
+                            <p class="product-description">
+                                A virtual reality headset for immersive educational
+                                experiences and interactive learning activities.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹14,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('fotonvr-headset', 'VR Headset', 14999, 'assets/images/fotonvr-headset.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCT 5 -->
+                    <article class="product-card" data-category="vr">
+                        <div class="product-image">
+                            <span class="product-tag">Education</span>
+                            <img src="assets/images/fotonvr-kit.jpg"
+                                alt="VR Education Kit"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">📚<br>VR Education Kit</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">fotonVR</div>
+                            <h3>VR Education Kit</h3>
+                            <p class="product-description">
+                                An immersive learning solution to support interactive
+                                lessons and visual exploration of educational topics.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹29,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('fotonvr-kit', 'VR Education Kit', 29999, 'assets/images/fotonvr-kit.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCT 6 -->
+                    <article class="product-card" data-category="vr">
+                        <div class="product-image">
+                            <span class="product-tag">For Schools</span>
+                            <img src="assets/images/fotonvr-lab.jpg"
+                                alt="VR School Lab"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="image-placeholder">🏫<br>VR School Lab</div>
+                        </div>
+
+                        <div class="product-body">
+                            <div class="product-category">fotonVR Lab</div>
+                            <h3>VR School Lab</h3>
+                            <p class="product-description">
+                                A school-focused VR learning setup for delivering
+                                immersive, visual and interactive classroom experiences.
+                            </p>
+
+                            <div class="product-bottom">
+                                <div class="product-price">
+                                    ₹99,999
+                                    <small>Listed price</small>
+                                </div>
+
+                                <button class="add-cart-button"
+                                    onclick="addToCart('fotonvr-lab', 'VR School Lab', 99999, 'assets/images/fotonvr-lab.jpg')">
+                                    + Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="empty-products" id="emptyProducts">
+                        No products found in this category.
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div>
+                        <div class="section-kicker">FOR SCHOOLS & INSTITUTIONS</div>
+                        <h2>Building a Future-Ready Learning Space?</h2>
+                        <p>
+                            Contact our team for product information, school lab
+                            requirements, demonstrations and institutional enquiries.
+                        </p>
+                    </div>
+
+                    <a href="contact.html" class="gradient-button">Talk to Our Team →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <img src="assets/logo.png" alt="Avinya Techno Group logo"
+                            onerror="this.style.display='none'">
+                        <span>
+                            <span class="brand-name gradient-text">ATGNEXA</span>
+                            <span class="brand-subtitle">by Avinya Techno Group</span>
+                        </span>
+                    </a>
+
+                    <p>
+                        Technology solutions for robotics, immersive VR learning,
+                        STEM education and innovation spaces.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="robotics.html">STEM & Robotics</a>
+                    <a href="fotonvr.html">fotonVR</a>
+                    <a href="it-accessories.html">IT Accessories</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="mailto:sales@avinya-group.com">sales@avinya-group.com</a>
+                    <a href="tel:+917022794801">+91 70227 94801</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <span>© <span id="currentYear"></span> ATGNEXA by Avinya Techno Group. All rights reserved.</span>
+                <span>Innovate · Secure · Automate · Connect.</span>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- CART OVERLAY -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+    <!-- CART DRAWER -->
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart"
+        aria-hidden="true">
+
+        <div class="cart-header">
+            <h2>🛒 Your Cart <span class="gradient-text" id="drawerCartCount">(0)</span></h2>
+            <button class="close-cart" onclick="closeCart()" aria-label="Close cart">×</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items are added by JavaScript -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+
+            <p class="cart-note">
+                Delivery charges and final order details can be confirmed during checkout.
+            </p>
+
+            <button class="checkout-button" id="checkoutButton"
+                onclick="checkout()" disabled>
+                Proceed to Checkout →
+            </button>
+
+            <a href="#products" class="continue-shopping" onclick="closeCart()">
+                Continue Shopping
+            </a>
+        </div>
+
+    </aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        /* ---------------------------------
+           MOBILE NAVIGATION
+        --------------------------------- */
+
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuToggle.addEventListener('click', function () {
+            const isOpen = mobileNav.classList.toggle('open');
+
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.textContent = isOpen ? '×' : '☰';
+        });
+
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileNav.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        /* ---------------------------------
+           PRODUCT FILTERS
+        --------------------------------- */
+
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const productCards = document.querySelectorAll('.product-card');
+        const emptyProducts = document.getElementById('emptyProducts');
+
+        filterButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                filterButtons.forEach(function (item) {
+                    item.classList.remove('active');
+                });
+
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                let visibleCount = 0;
+
+                productCards.forEach(function (card) {
+                    const matches =
+                        filter === 'all' || card.dataset.category === filter;
+
+                    card.style.display = matches ? 'flex' : 'none';
+
+                    if (matches) {
+                        visibleCount++;
+                    }
+                });
+
+                emptyProducts.style.display =
+                    visibleCount === 0 ? 'block' : 'none';
+            });
+        });
+
+        /* ---------------------------------
+           SHOPPING CART
+           Cart data is saved in localStorage
+        --------------------------------- */
+
+        const CART_KEY = 'atgnexaCart';
+        let cart = loadCart();
+
+        function loadCart() {
+            try {
+                const storedCart = JSON.parse(localStorage.getItem(CART_KEY));
+
+                if (!Array.isArray(storedCart)) {
+                    return [];
+                }
+
+                return storedCart.filter(function (item) {
+                    return item &&
+                        typeof item.id === 'string' &&
+                        typeof item.name === 'string' &&
+                        Number.isFinite(Number(item.price)) &&
+                        Number(item.price) >= 0 &&
+                        Number.isFinite(Number(item.quantity)) &&
+                        Number(item.quantity) > 0;
+                }).map(function (item) {
+                    return {
+                        id: item.id,
+                        name: item.name,
+                        price: Number(item.price),
+                        image: item.image || '',
+                        quantity: Math.floor(Number(item.quantity))
+                    };
+                });
+
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function formatPrice(amount) {
+            return '₹' + Number(amount).toLocaleString('en-IN', {
+                maximumFractionDigits: 2
+            });
+        }
+
+        function saveCart() {
+            try {
+                localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            } catch (error) {
+                showToast('Unable to save the cart in this browser.');
+            }
+
+            updateCart();
+        }
+
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(function (item) {
+                return item.id === id;
+            });
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: Number(price),
+                    image: image,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            showToast(name + ' added to cart.');
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(function (item) {
+                return item.id !== id;
+            });
+
+            saveCart();
+        }
+
+        function changeQuantity(id, change) {
+            const item = cart.find(function (product) {
+                return product.id === id;
+            });
+
+            if (!item) return;
+
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                removeFromCart(id);
+                return;
+            }
+
+            saveCart();
+        }
+
+        function getCartCount() {
+            return cart.reduce(function (total, item) {
+                return total + item.quantity;
+            }, 0);
+        }
+
+        function getCartTotal() {
+            return cart.reduce(function (total, item) {
+                return total + item.price * item.quantity;
+            }, 0);
+        }
+
+        function updateCart() {
+            const count = getCartCount();
+
+            document.getElementById('headerCartCount').textContent = count;
+            document.getElementById('drawerCartCount').textContent = '(' + count + ')';
+            document.getElementById('cartSubtotal').textContent =
+                formatPrice(getCartTotal());
+
+            document.getElementById('checkoutButton').disabled =
+                cart.length === 0;
+
+            const cartItemsContainer = document.getElementById('cartItems');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛍️</div>
+                        <h3>Your cart is empty</h3>
+                        <p style="margin-top:8px;font-size:13px;">
+                            Explore our products and add something to your cart.
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map(function (item) {
+                const safeId = escapeHTML(item.id);
+                const safeName = escapeHTML(item.name);
+                const safeImage = escapeHTML(item.image);
+
+                return `
+                    <div class="cart-item">
+                        <img
+                            class="cart-item-image"
+                            src="${safeImage}"
+                            alt="${safeName}"
+                            onerror="this.style.visibility='hidden'"
+                        >
+
+                        <div>
+                            <h4>${safeName}</h4>
+                            <div class="cart-item-price">
+                                ${formatPrice(item.price * item.quantity)}
+                            </div>
+
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button
+                                        onclick="changeQuantity('${safeId}', -1)"
+                                        aria-label="Decrease quantity">−</button>
+
+                                    <span>${item.quantity}</span>
+
+                                    <button
+                                        onclick="changeQuantity('${safeId}', 1)"
+                                        aria-label="Increase quantity">+</button>
+                                </div>
+
+                                <button
+                                    class="remove-item"
+                                    onclick="removeFromCart('${safeId}')">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, function (character) {
+                const entities = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                };
+
+                return entities[character];
+            });
+        }
+
+        function openCart() {
+            document.getElementById('cartDrawer').classList.add('open');
+            document.getElementById('cartOverlay').classList.add('open');
+            document.getElementById('cartDrawer').setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
+            document.getElementById('cartDrawer').setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Please add a product before checkout.');
+                return;
+            }
+
+            window.location.href = 'checkout.html';
+        }
+
+        /* Close cart with Escape key */
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeCart();
+            }
+        });
+
+        /* Toast notification */
+
+        let toastTimeout;
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+
+            toastTimeout = setTimeout(function () {
+                toast.classList.remove('show');
+            }, 2600);
+        }
+
+        /* Footer year and initial cart */
+
+        document.getElementById('currentYear').textContent =
+            new Date().getFullYear();
+
+        updateCart();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI & Robotics Lab Solutions for Schools | ATGNEXA</title>
+
+  <meta
+    name="description"
+    content="AI & Robotics Lab Solutions for Schools by Avinya Technologies. Build future-ready skills through robotics, coding, AI, IoT, AR/VR and hands-on experiential learning."
+  >
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+            poppins: ["Poppins", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #0B0F19;
+      color: #F3F4F6;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       THEME
+    ========================================= */
+
+    .gradient-text {
+      background: linear-gradient(
+        135deg,
+        #00A8FF 0%,
+        #E60023 100%
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+
+    .gradient-border {
+      position: relative;
+      background: #0B0F19;
+      border-radius: 24px;
+      z-index: 1;
+    }
+
+
+
+/* Gradient border for ATGNEXA */
+.gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    background:
+        linear-gradient(#0B0F19, #0B0F19) padding-box,
+        linear-gradient(135deg, #00A8FF, #E60023) border-box;
+}
+    .glass-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+
+    .grid-bg {
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero-bg {
+      background:
+        radial-gradient(
+          circle at 10% 25%,
+          rgba(0,168,255,0.14),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 30%,
+          rgba(230,0,35,0.12),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(11,15,25,.2),
+          #0B0F19
+        );
+    }
+
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      opacity: .22;
+    }
+
+
+    .orb-blue {
+      width: 330px;
+      height: 330px;
+      background: #00A8FF;
+      left: -170px;
+      top: 200px;
+    }
+
+
+    .orb-red {
+      width: 330px;
+      height: 330px;
+      background: #E60023;
+      right: -170px;
+      top: 650px;
+    }
+
+
+    /* =========================================
+       ANIMATIONS
+    ========================================= */
+
+    @keyframes float {
+
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+    }
+
+
+    .float {
+      animation: float 5s ease-in-out infinite;
+    }
+
+
+    @keyframes pulse {
+
+      0%,100% {
+        opacity: .35;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .75;
+        transform: scale(1.08);
+      }
+
+    }
+
+
+    .pulse {
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+
+    @keyframes gradientMove {
+
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+
+    }
+
+
+    .animated-gradient {
+      background-size: 200% 200%;
+      animation: gradientMove 7s ease infinite;
+    }
+
+
+    /* =========================================
+       REVEAL
+    ========================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
+    .nav-link {
+      position: relative;
+      color: #9CA3AF;
+      transition: .3s;
+    }
+
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -8px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #00A8FF,
+          #E60023
+        );
+
+      transition: width .3s;
+    }
+
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+
+    .primary-btn {
+      background:
+        linear-gradient(
+          135deg,
+          #00A8FF,
+          #E60023
+        );
+
+      background-size: 200% 200%;
+      transition: .35s;
+    }
+
+
+    .primary-btn:hover {
+      background-position: 100% 50%;
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 15px 35px rgba(0,168,255,.15);
+    }
+
+
+    .secondary-btn {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .35s;
+    }
+
+
+    .secondary-btn:hover {
+      background: rgba(0,168,255,.06);
+      border-color: rgba(0,168,255,.4);
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================================
+       IMAGE
+    ========================================= */
+
+    .image-container {
+      overflow: hidden;
+    }
+
+
+    .image-container img {
+      transition: transform .7s ease;
+    }
+
+
+    .image-container:hover img {
+      transform: scale(1.04);
+    }
+
+
+    /* =========================================
+       TECHNOLOGY CARDS
+    ========================================= */
+
+    .tech-card {
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease;
+    }
+
+
+    .tech-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,168,255,.35);
+      background: rgba(255,255,255,.05);
+    }
+
+
+    /* =========================================
+       PROJECT CARDS
+    ========================================= */
+
+    .project-card {
+      transition:
+        transform .35s ease,
+        border-color .35s ease;
+    }
+
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(230,0,35,.35);
+    }
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    #mobileMenu {
+      display: none;
+    }
+
+
+    #mobileMenu.open {
+      display: block;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/85 backdrop-blur-xl border-b border-white/10"
+>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+    <div class="h-20 flex items-center justify-between">
+
+
+      <!-- LOGO -->
+
+      <a
+        href="index.html"
+        class="flex items-center gap-3"
+      >
+
+        <img
+          src="assets/logo.png"
+          alt="Avinya Techno Group logo"
+          class="h-10 w-auto object-contain"
+          onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
+        >
+
+
+        <div
+          id="logoFallback"
+          class="hidden"
+        >
+
+          <div class="text-2xl font-black gradient-text">
+            ATGNEXA
+          </div>
+
+          <div class="text-[9px] uppercase tracking-[.2em] text-gray-500">
+            by Avinya Techno Group
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- DESKTOP NAV -->
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm">
+
+        <a
+          href="index.html"
+          class="nav-link"
+        >
+          Home
+        </a>
+
+
+        <a
+          href="fotonvr.html"
+          class="nav-link"
+        >
+          fotonVR
+        </a>
+
+
+        <a
+          href="robotics.html"
+          class="nav-link active"
+        >
+          Robotics
+        </a>
+
+
+        <a
+          href="it-accessories.html"
+          class="nav-link"
+        >
+          IT Accessories
+        </a>
+
+        <a
+          href="contact.html"
+          class="nav-link"
+        >
+          Contact
+        </a>
+
+      </nav>
+
+
+      <!-- SHOP BUTTON -->
+
+      <a
+        href="shop.html"
+        class="hidden lg:inline-flex primary-btn px-5 py-2.5 rounded-xl font-semibold"
+      >
+        Shop Now
+      </a>
+
+
+      <!-- MOBILE BUTTON -->
+
+      <button
+        id="menuButton"
+        class="lg:hidden w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"
+      >
+
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+
+      </button>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+      id="mobileMenu"
+      class="lg:hidden pb-5"
+    >
+
+      <div class="glass-card rounded-2xl p-4 space-y-1">
+
+        <a
+          href="index.html"
+          class="block px-4 py-3 rounded-xl hover:bg-white/5"
+        >
+          Home
+        </a>
+
+
+        <a
+          href="fotonvr.html"
+          class="block px-4 py-3 rounded-xl hover:bg-white/5"
+        >
+          fotonVR
+        </a>
+
+
+        <a
+          href="robotics.html"
+          class="block px-4 py-3 rounded-xl bg-white/5 text-white"
+        >
+          Robotics
+        </a>
+
+
+        <a
+          href="it-accessories.html"
+          class="block px-4 py-3 rounded-xl hover:bg-white/5"
+        >
+          IT Accessories
+        </a>
+
+
+        <a
+          href="shop.html"
+          class="block px-4 py-3 rounded-xl hover:bg-white/5"
+        >
+          Shop
+        </a>
+
+
+        <a
+          href="contact.html"
+          class="block px-4 py-3 rounded-xl hover:bg-white/5"
+        >
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+  class="relative min-h-screen pt-32 pb-20 overflow-hidden grid-bg hero-bg"
+>
+
+  <div class="orb orb-blue pulse"></div>
+  <div class="orb orb-red pulse"></div>
+
+
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center min-h-[75vh]">
+
+
+      <!-- HERO CONTENT -->
+
+      <div class="reveal">
+
+        <div class="inline-flex items-center gap-3 glass-card px-4 py-2 rounded-full">
+
+          <span
+            class="w-2 h-2 rounded-full bg-[#00A8FF] shadow-[0_0_15px_#00A8FF]"
+          ></span>
+
+          <span class="text-sm text-gray-300">
+            AI & Robotics Lab Solutions
+          </span>
+
+        </div>
+
+
+        <h1
+          class="mt-7 font-poppins text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02]"
+        >
+
+          AI & Robotics
+
+          <span class="gradient-text block">
+            Lab Solutions
+          </span>
+
+          for Schools
+
+        </h1>
+
+
+        <p class="mt-7 text-lg md:text-xl leading-relaxed text-gray-400 max-w-2xl">
+
+          Transform your school into a
+          <strong class="text-white">
+            future-ready innovation hub
+          </strong>
+          with an advanced AI & Robotics Lab aligned with
+          <strong class="text-white">
+            CBSE, ICSE, State Boards, and NEP 2020 guidelines.
+          </strong>
+
+        </p>
+
+
+        <p class="mt-5 text-gray-500 leading-relaxed max-w-2xl">
+
+          Avinya Technologies provides a complete ecosystem including
+          robotics kits, coding platforms, structured curriculum,
+          teacher training, and innovation competitions designed to
+          prepare students for the AI-driven world.
+
+        </p>
+
+
+        <div class="mt-9 flex flex-wrap gap-4">
+
+          <a
+            href="#contact"
+            class="primary-btn px-6 py-3.5 rounded-xl font-semibold"
+          >
+            Get Started
+          </a>
+
+
+          <a
+            href="#ecosystem"
+            class="secondary-btn px-6 py-3.5 rounded-xl font-semibold"
+          >
+            Explore Solutions
+          </a>
+
+        </div>
+
+
+        <div class="mt-10 flex flex-wrap gap-6 text-sm text-gray-500">
+
+          <span>
+            ✓ CBSE Aligned
+          </span>
+
+          <span>
+            ✓ ICSE Aligned
+          </span>
+
+          <span>
+            ✓ NEP 2020
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- HERO IMAGE -->
+
+      <div class="relative reveal">
+
+        <div class="absolute inset-10 bg-[#00A8FF]/10 blur-[100px] rounded-full"></div>
+
+
+        <div class="gradient-border rounded-3xl p-[1px]">
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+
+            <img
+              src="https://cloud-1de12d.becdn.net/media/original/364a94839ff02c21f39b2dece2eda87e/1.jpg"
+              alt="AI and Robotics Lab for schools"
+              class="w-full h-[540px] object-cover float"
+            >
+
+
+            <div class="absolute top-5 left-5 glass-card rounded-xl px-4 py-3">
+
+              <div class="flex items-center gap-3">
+
+                <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+
+                <div>
+
+                  <p class="text-xs text-gray-400">
+                    Innovation Ecosystem
+                  </p>
+
+                  <p class="font-semibold text-sm">
+                    AI + Robotics + Coding
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="absolute bottom-5 left-5 right-5 glass-card rounded-2xl p-5">
+
+              <p class="text-xs uppercase tracking-[.25em] text-gray-400">
+                Future Ready Education
+              </p>
+
+              <h3 class="mt-1 text-xl font-bold">
+                Build. Code. Innovate.
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ECOSYSTEM
+===================================================== -->
+
+<section
+  id="ecosystem"
+  class="relative py-24"
+>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="max-w-3xl reveal">
+
+      <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#00A8FF] font-semibold">
+
+        <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+
+        Innovation Ecosystem
+
+      </div>
+
+
+      <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+        Future-Ready AI & Robotics
+
+        <span class="gradient-text">
+          Innovation Ecosystem
+        </span>
+
+      </h2>
+
+
+      <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+        Our AI and Robotics Lab program enables schools to deliver
+        interactive, experiential learning in coding, robotics,
+        artificial intelligence, and emerging technologies.
+
+      </p>
+
+
+      <p class="mt-5 text-gray-500 leading-relaxed">
+
+        Students learn through hands-on projects, robotics experiments,
+        and real-world problem solving, helping them build critical
+        21st-century skills.
+
+      </p>
+
+    </div>
+
+
+    <!-- TECHNOLOGIES -->
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+
+
+      <div class="tech-card glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-3xl">
+          💻
+        </div>
+
+        <h3 class="mt-5 font-bold">
+          Block & Python Coding
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Build programming foundations from visual coding to Python.
+        </p>
+
+      </div>
+
+
+      <div class="tech-card glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-3xl">
+          🧠
+        </div>
+
+        <h3 class="mt-5 font-bold">
+          AI & Machine Learning
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Introduce students to artificial intelligence and ML concepts.
+        </p>
+
+      </div>
+
+
+      <div class="tech-card glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-3xl">
+          🤖
+        </div>
+
+        <h3 class="mt-5 font-bold">
+          Robotics & Electronics
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Learn through robotics, electronics, motors and sensors.
+        </p>
+
+      </div>
+
+
+      <div class="tech-card glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-3xl">
+          🌐
+        </div>
+
+        <h3 class="mt-5 font-bold">
+          Internet of Things
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Create connected devices and smart technology solutions.
+        </p>
+
+      </div>
+
+
+      <div class="tech-card glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-3xl">
+          🥽
+        </div>
+
+        <h3 class="mt-5 font-bold">
+          AR/VR & 3D Experiences
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Explore immersive and interactive digital experiences.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section
+  class="relative py-24 grid-bg"
+>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+      <!-- IMAGE -->
+
+      <div class="reveal">
+
+        <div class="gradient-border rounded-3xl p-[1px]">
+
+          <div class="image-container glass-card rounded-3xl">
+
+            <img
+              src="https://cloud-1de12d.becdn.net/media/original/aeea020a3ca7541182fe15972c2bb97b/2.jpg"
+              alt="Students building robotics and AI projects"
+              class="w-full h-[500px] object-cover rounded-3xl"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTENT -->
+
+      <div class="reveal">
+
+        <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#E60023] font-semibold">
+
+          <span class="w-2 h-2 rounded-full bg-[#E60023]"></span>
+
+          Student Innovation
+
+        </div>
+
+
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+          Students Build
+
+          <span class="gradient-text">
+            Real Projects
+          </span>
+
+        </h2>
+
+
+        <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+          Students move beyond theory and use their knowledge to create
+          practical solutions to real-world problems.
+
+        </p>
+
+
+        <div class="mt-8 grid sm:grid-cols-2 gap-4">
+
+
+          <div class="project-card glass-card rounded-2xl p-5">
+
+            <div class="text-2xl">
+              🚗
+            </div>
+
+            <h3 class="mt-3 font-bold">
+              Self-Driving Cars
+            </h3>
+
+          </div>
+
+
+          <div class="project-card glass-card rounded-2xl p-5">
+
+            <div class="text-2xl">
+              🏠
+            </div>
+
+            <h3 class="mt-3 font-bold">
+              Smart Home Automation
+            </h3>
+
+          </div>
+
+
+          <div class="project-card glass-card rounded-2xl p-5">
+
+            <div class="text-2xl">
+              🤖
+            </div>
+
+            <h3 class="mt-3 font-bold">
+              AI-Powered Robots
+            </h3>
+
+          </div>
+
+
+          <div class="project-card glass-card rounded-2xl p-5">
+
+            <div class="text-2xl">
+              👁️
+            </div>
+
+            <h3 class="mt-3 font-bold">
+              Computer Vision
+            </h3>
+
+          </div>
+
+
+          <div class="project-card glass-card rounded-2xl p-5 sm:col-span-2">
+
+            <div class="text-2xl">
+              🌐
+            </div>
+
+            <h3 class="mt-3 font-bold">
+              IoT-Based Solutions
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LAB SETUP
+===================================================== -->
+
+<section class="relative py-24">
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="text-center max-w-3xl mx-auto reveal">
+
+      <div class="inline-flex items-center gap-3 text-sm uppercase tracking-[.25em] text-[#00A8FF] font-semibold">
+
+        School Infrastructure
+
+        <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+
+      </div>
+
+
+      <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+        AI & Robotics Lab
+
+        <span class="gradient-text">
+          Setup for Schools
+        </span>
+
+      </h2>
+
+
+      <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+        Avinya Technologies provides end-to-end AI Lab setup solutions
+        for CBSE, ICSE, and State Board schools.
+
+      </p>
+
+    </div>
+
+
+    <div class="mt-14 grid lg:grid-cols-2 gap-8">
+
+
+      <!-- HARDWARE -->
+
+      <div class="gradient-border rounded-3xl p-[1px] reveal">
+
+        <div class="glass-card rounded-3xl p-8 h-full">
+
+          <div class="w-14 h-14 rounded-2xl bg-[#00A8FF]/10 border border-[#00A8FF]/20 flex items-center justify-center text-2xl">
+            🤖
+          </div>
+
+
+          <h3 class="mt-6 text-2xl font-bold">
+            AI & Robotics Hardware Kits
+          </h3>
+
+
+          <p class="mt-3 text-gray-500">
+            Hardware and components required to build practical
+            robotics and electronics projects.
+          </p>
+
+
+          <ul class="mt-7 space-y-4 text-gray-300">
+
+            <li class="flex gap-3">
+              <span class="text-[#00A8FF]">✓</span>
+              Robotics development kits
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-[#00A8FF]">✓</span>
+              Sensors, motors, and electronics modules
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-[#00A8FF]">✓</span>
+              DIY robotics add-ons
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-[#00A8FF]">✓</span>
+              Lab consumables
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <!-- SOFTWARE -->
+
+      <div class="gradient-border rounded-3xl p-[1px] reveal">
+
+        <div class="glass-card rounded-3xl p-8 h-full">
+
+          <div class="w-14 h-14 rounded-2xl bg-[#E60023]/10 border border-[#E60023]/20 flex items-center justify-center text-2xl">
+            💻
+          </div>
+
+
+          <h3 class="mt-6 text-2xl font-bold">
+            Coding & AI Software Platform
+          </h3>
+
+
+          <p class="mt-4 text-gray-400 leading-relaxed">
+
+            Students learn coding and AI using a
+            <strong class="text-white">
+              block-based and Python programming platform
+            </strong>,
+            enabling them to create games, robots, AI projects,
+            and IoT applications.
+
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-3">
+
+            <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+              Block Coding
+            </span>
+
+            <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+              Python
+            </span>
+
+            <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+              AI Projects
+            </span>
+
+            <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+              IoT
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EARLY LEARNERS
+===================================================== -->
+
+<section
+  class="relative py-24 grid-bg"
+>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+      <div class="reveal">
+
+        <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#E60023] font-semibold">
+
+          <span class="w-2 h-2 rounded-full bg-[#E60023]"></span>
+
+          Early Learning
+
+        </div>
+
+
+        <h2 class="mt-5 text-4xl md:text-5xl font-black leading-tight">
+
+          Robotics & Computational Thinking
+
+          <span class="gradient-text">
+            for Early Learners
+          </span>
+
+        </h2>
+
+
+        <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+          For <strong class="text-white">Kindergarten and Primary grades</strong>,
+          we implement play-based robotics learning programs.
+
+        </p>
+
+
+        <p class="mt-5 text-gray-500 leading-relaxed">
+
+          These programs introduce technology through age-appropriate,
+          story-based and gamified learning experiences.
+
+        </p>
+
+
+        <div class="mt-8 space-y-4">
+
+
+          <div class="glass-card rounded-xl p-4 flex items-center gap-4">
+
+            <span class="w-10 h-10 rounded-lg bg-[#00A8FF]/10 text-[#00A8FF] flex items-center justify-center">
+              01
+            </span>
+
+            <span class="font-semibold">
+              Foundational literacy
+            </span>
+
+          </div>
+
+
+          <div class="glass-card rounded-xl p-4 flex items-center gap-4">
+
+            <span class="w-10 h-10 rounded-lg bg-[#E60023]/10 text-[#E60023] flex items-center justify-center">
+              02
+            </span>
+
+            <span class="font-semibold">
+              Foundational numeracy
+            </span>
+
+          </div>
+
+
+          <div class="glass-card rounded-xl p-4 flex items-center gap-4">
+
+            <span class="w-10 h-10 rounded-lg bg-[#00A8FF]/10 text-[#00A8FF] flex items-center justify-center">
+              03
+            </span>
+
+            <span class="font-semibold">
+              Computational thinking skills
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="mt-7 p-5 rounded-2xl border border-[#00A8FF]/20 bg-[#00A8FF]/5">
+
+          <p class="text-sm text-gray-400">
+
+            <strong class="text-white">
+              Story-based gamified activities
+            </strong>
+            make technology learning engaging and interactive.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="reveal">
+
+        <div class="gradient-border rounded-3xl p-[1px]">
+
+          <div class="image-container glass-card rounded-3xl">
+
+            <img
+              src="https://cloud-1de12d.becdn.net/media/original/0d122257c92109813d636c9b0f790ee0/3.jpg"
+              alt="Early learner robotics education"
+              class="w-full h-[500px] object-cover rounded-3xl"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEACHER EMPOWERMENT
+===================================================== -->
+
+<section class="relative py-24">
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+      <div class="relative reveal">
+
+        <div class="gradient-border rounded-3xl p-[1px]">
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+
+            <img
+              src="https://cloud-1de12d.becdn.net/media/original/1927d1f5fd29395f6b5e4a3800db22ac/AI.jpg"
+              alt="AI teacher training and robotics education"
+              class="w-full h-[500px] object-cover"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="reveal">
+
+        <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#00A8FF] font-semibold">
+
+          <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+
+          Teacher Development
+
+        </div>
+
+
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+          360° Teacher
+
+          <span class="gradient-text">
+            Empowerment Program
+          </span>
+
+        </h2>
+
+
+        <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+          To ensure successful implementation, Avinya Technologies
+          provides comprehensive teacher training programs.
+
+        </p>
+
+
+        <h3 class="mt-9 text-xl font-bold">
+          Training Formats
+        </h3>
+
+
+        <div class="mt-5 grid sm:grid-cols-3 gap-3">
+
+
+          <div class="glass-card rounded-xl p-4 text-sm text-gray-300">
+            Onsite teacher workshops
+          </div>
+
+
+          <div class="glass-card rounded-xl p-4 text-sm text-gray-300">
+            International educator bootcamps
+          </div>
+
+
+          <div class="glass-card rounded-xl p-4 text-sm text-gray-300">
+            Skill-based webinars and workshops
+          </div>
+
+        </div>
+
+
+        <h3 class="mt-9 text-xl font-bold">
+          Teachers Receive
+        </h3>
+
+
+        <ul class="mt-5 space-y-4">
+
+          <li class="flex gap-3 text-gray-400">
+            <span class="text-[#00A8FF]">✓</span>
+            Lesson plans and teaching materials
+          </li>
+
+          <li class="flex gap-3 text-gray-400">
+            <span class="text-[#E60023]">✓</span>
+            Robotics and AI training
+          </li>
+
+          <li class="flex gap-3 text-gray-400">
+            <span class="text-[#00A8FF]">✓</span>
+            Certification and professional development
+          </li>
+
+        </ul>
+
+
+        <p class="mt-7 text-gray-500 leading-relaxed">
+
+          This empowers educators to effectively integrate AI,
+          coding, and robotics into classroom teaching.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPLETE SUPPORT
+===================================================== -->
+
+<section
+  class="relative py-24 grid-bg"
+>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="text-center max-w-3xl mx-auto reveal">
+
+      <div class="inline-flex items-center gap-3 text-sm uppercase tracking-[.25em] text-[#E60023] font-semibold">
+
+        School Support
+
+        <span class="w-2 h-2 rounded-full bg-[#E60023]"></span>
+
+      </div>
+
+
+      <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+        Complete Support
+
+        <span class="gradient-text">
+          for Schools
+        </span>
+
+      </h2>
+
+
+      <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+        Avinya Technologies provides end-to-end support for schools
+        adopting AI & robotics labs.
+
+      </p>
+
+    </div>
+
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          📐
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Lab Planning
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Lab layout planning and setup.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          🤖
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Equipment
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Robotics kits and lab equipment.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          🎓
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Teacher Training
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Teacher training and certification.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          📚
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Academic Support
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Year-long academic support.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          💻
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Software Licensing
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Software licensing for students.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal">
+
+        <div class="text-2xl">
+          🏆
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Innovation Events
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Innovation festivals and competitions.
+        </p>
+
+      </div>
+
+
+      <div class="glass-card rounded-2xl p-6 reveal sm:col-span-2">
+
+        <div class="text-2xl">
+          🛠️
+        </div>
+
+        <h3 class="mt-4 font-bold">
+          Technical Support
+        </h3>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Online and offline technical support for schools,
+          teachers and labs.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY CHOOSE
+===================================================== -->
+
+<section class="relative py-24">
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+      <div class="reveal">
+
+        <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#00A8FF] font-semibold">
+
+          <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+
+          Why Choose Us
+
+        </div>
+
+
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+
+          Why Choose
+
+          <span class="gradient-text">
+            Avinya Technologies?
+          </span>
+
+        </h2>
+
+
+        <p class="mt-6 text-lg text-gray-400 leading-relaxed">
+
+          A complete ecosystem designed to help schools introduce
+          future-ready technology education effectively.
+
+        </p>
+
+      </div>
+
+
+      <div class="grid sm:grid-cols-2 gap-4 reveal">
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#00A8FF] text-2xl">
+            01
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            Complete AI & Robotics Lab Solution
+          </h3>
+
+        </div>
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#E60023] text-2xl">
+            02
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            CBSE, ICSE & NEP 2020 Aligned Curriculum
+          </h3>
+
+        </div>
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#00A8FF] text-2xl">
+            03
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            Hands-on Experiential Learning Approach
+          </h3>
+
+        </div>
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#E60023] text-2xl">
+            04
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            Teacher Training & Long-Term Support
+          </h3>
+
+        </div>
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#00A8FF] text-2xl">
+            05
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            Global Competitions & Innovation Events
+          </h3>
+
+        </div>
+
+
+        <div class="glass-card rounded-2xl p-6">
+
+          <div class="text-[#E60023] text-2xl">
+            06
+          </div>
+
+          <h3 class="mt-4 font-bold">
+            Future-Ready Technology Education Ecosystem
+          </h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section
+  id="contact"
+  class="relative py-24 overflow-hidden"
+>
+
+  <div class="absolute inset-0 hero-bg"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+
+    <div class="gradient-border rounded-3xl p-[1px] reveal">
+
+      <div class="glass-card rounded-3xl p-10 md:p-16 text-center">
+
+
+        <p class="text-sm uppercase tracking-[.25em] text-gray-500">
+          Start Your Innovation Journey
+        </p>
+
+
+        <h2 class="mt-5 text-4xl md:text-6xl font-black">
+
+          Get Started with
+
+          <span class="gradient-text block">
+            AI & Robotics Lab
+          </span>
+
+        </h2>
+
+
+        <p class="mt-6 max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+
+          Transform your school into a future-ready technology
+          learning hub. Contact Avinya Technologies today to set up
+          your AI & Robotics Lab.
+
+        </p>
+
+
+        <div class="mt-9 flex justify-center flex-wrap gap-4">
+
+
+          <a
+            href="mailto:sales@avinya-group.com?subject=AI & Robotics Lab Enquiry"
+            class="primary-btn px-7 py-3.5 rounded-xl font-semibold"
+          >
+            Contact Us
+          </a>
+
+
+          <a
+            href="tel:+917022794801"
+            class="secondary-btn px-7 py-3.5 rounded-xl font-semibold"
+          >
+            Call +91 70227 94801
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="border-t border-white/10 bg-[#080B12]">
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+
+      <!-- BRAND -->
+
+      <div>
+
+        <a
+          href="index.html"
+          class="inline-flex items-center gap-3"
+        >
+
+          <img
+            src="assets/logo.png"
+            alt="Avinya Techno Group logo"
+            class="h-9 w-auto"
+          >
+
+          <span class="text-2xl font-black gradient-text">
+            ATGNEXA
+          </span>
+
+        </a>
+
+
+        <p class="mt-5 text-gray-500 text-sm leading-relaxed">
+
+          A technology store by Avinya Techno Group L.L.P —
+          Robotics, VR, AI & STEM solutions.
+
+        </p>
+
+
+        <p class="mt-5 text-sm font-semibold text-gray-400">
+          Innovate · Secure · Automate · Connect
+        </p>
+
+      </div>
+
+
+
+      <!-- CONTACT -->
+
+      <div>
+
+        <h4 class="font-bold text-white">
+          Contact
+        </h4>
+
+
+        <div class="mt-5 space-y-4 text-sm text-gray-500">
+
+          <p>
+            2nd Floor, Hiranya Complex,<br>
+            Opp. Pragathi Hospital,<br>
+            Bolwar, Puttur,<br>
+            Dakshina Kannada,<br>
+            Karnataka – 574201
+          </p>
+
+
+          <p>
+
+            ✉️
+
+            <a
+              href="mailto:sales@avinya-group.com"
+              class="hover:text-white transition"
+            >
+              sales@avinya-group.com
+            </a>
+
+          </p>
+
+
+          <p>
+
+            📞
+
+            <a
+              href="tel:+917022794801"
+              class="hover:text-white transition"
+            >
+              +91 70227 94801
+            </a>
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- QUICK LINKS -->
+
+      <div>
+
+        <h4 class="font-bold text-white">
+          Quick Links
+        </h4>
+
+
+        <div class="mt-5 space-y-3 text-sm">
+
+          <a
+            href="index.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            Home
+          </a>
+
+
+          <a
+            href="shop.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            Shop
+          </a>
+
+
+          <a
+            href="robotics.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            STEM & Robotics
+          </a>
+
+
+          <a
+            href="fotonvr.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            fotonVR
+          </a>
+
+
+          <a
+            href="it-accessories.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            IT Accessories
+          </a>
+
+
+          <a
+            href="contact.html"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- BUSINESS VERTICALS -->
+
+      <div>
+
+        <h4 class="font-bold text-white">
+          Business Verticals
+        </h4>
+
+
+        <div class="mt-5 space-y-3 text-sm">
+
+          <a
+            href="https://www.avinya-group.com"
+            target="_blank"
+            rel="noopener"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            Avinya Technologies
+          </a>
+
+
+          <a
+            href="https://www.avinya-group.com/ai-and-robotics"
+            target="_blank"
+            rel="noopener"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            AI & Robotics
+          </a>
+
+
+          <a
+            href="https://fotonvr.com/"
+            target="_blank"
+            rel="noopener"
+            class="block text-gray-500 hover:text-white transition"
+          >
+            fotonVR
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="mt-12 pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-gray-600">
+
+      <p>
+        © 2026 Avinya Techno Group L.L.P — ATGNEXA
+      </p>
+
+      <p>
+        A technology store by Avinya Techno Group
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+  href="https://wa.me/917022794801"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat on WhatsApp"
+  class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/20 hover:scale-110 transition"
+>
+
+  <svg
+    viewBox="0 0 32 32"
+    width="27"
+    height="27"
+    fill="#fff"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+
+    <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.697 4.61 1.902 6.484L4 29l7.72-1.855A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16.001 3zm.001 21.75c-1.89 0-3.66-.523-5.17-1.43l-.371-.22-4.586 1.102 1.127-4.47-.242-.386A9.71 9.71 0 0 1 5.25 15c0-5.937 4.813-10.75 10.75-10.75S26.75 9.063 26.75 15 21.938 24.75 16.001 24.75zm5.598-8.06c-.307-.154-1.815-.895-2.096-.997-.281-.102-.486-.153-.69.154-.204.307-.792.997-.972 1.202-.179.204-.358.23-.665.077-.307-.154-1.297-.478-2.47-1.523-.913-.814-1.53-1.82-1.71-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.384-.026-.537-.077-.154-.69-1.664-.946-2.28-.249-.599-.502-.518-.69-.527-.179-.008-.384-.01-.588-.01-.204 0-.537.077-.818.384-.281.307-1.073 1.049-1.073 2.559 0 1.51 1.099 2.969 1.252 3.174.153.204 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.646.734.233 1.402.2 1.93.122.589-.088 1.815-.742 2.071-1.459.256-.717.256-1.331.179-1.459-.077-.128-.281-.204-.588-.358z"/>
+
+  </svg>
+
+</a>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+  /* MOBILE MENU */
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+  menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("open");
+
+  });
+
+
+  document
+    .querySelectorAll("#mobileMenu a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+
+      });
+
+    });
+
+
+
+  /* SCROLL REVEAL */
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+  const observer =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+  revealElements.forEach(element => {
+
+    observer.observe(element);
+
+  });
+
+</script>
+
+
+</body>
+</html>

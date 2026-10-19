@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATGNEXA | Your Tech. Our Priority.</title>
+
+    <meta name="description"
+        content="ATGNEXA by Avinya Techno Group — Robotics, AI, VR learning solutions, STEM technology and IT accessories.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           GRADIENT
+        ========================= */
+
+     /* ATGNEXA gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #00A8FF, #E60023);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+        .gradient-border {
+            border: 1px solid transparent;
+
+            background-image:
+                linear-gradient(#0B0F19, #0B0F19),
+                linear-gradient(135deg, #00A8FF, #E60023);
+
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        /* =========================
+           GLASS
+        ========================= */
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 168, 255, 0.30);
+        }
+
+        /* =========================
+           GLOW
+        ========================= */
+
+        .glow-red:hover {
+            box-shadow:
+                0 0 25px rgba(230, 0, 35, 0.35);
+        }
+
+        .glow-blue:hover {
+            box-shadow:
+                0 0 25px rgba(0, 168, 255, 0.35);
+        }
+
+        /* =========================
+           BACKGROUND ORBS
+        ========================= */
+
+        .orb {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: floatingOrb 8s ease-in-out infinite;
+        }
+
+        .blue-orb {
+            background: rgba(0, 168, 255, 0.12);
+        }
+
+        .red-orb {
+            background: rgba(230, 0, 35, 0.10);
+            animation-delay: 2s;
+        }
+
+        @keyframes floatingOrb {
+
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(25px, -30px);
+            }
+
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero-animation {
+            animation: heroAnimation 1s ease forwards;
+        }
+
+        @keyframes heroAnimation {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           FLOATING CARDS
+        ========================= */
+
+        .floating-card {
+            animation: floatingCard 5s ease-in-out infinite;
+        }
+
+        .floating-card-delay {
+            animation: floatingCard 5s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatingCard {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+        /* =========================
+           SOLUTION CARD
+        ========================= */
+
+        .solution-card {
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* =========================
+           GRID BACKGROUND
+        ========================= */
+
+        .grid-background {
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 60px 60px;
+        }
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        #mobileMenu {
+            display: none;
+        }
+
+        #mobileMenu.active {
+            display: block;
+        }
+
+        /* =========================
+           NAV UNDERLINE
+        ========================= */
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00A8FF,
+                    #E60023
+                );
+
+            transition: width 0.3s ease;
+
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* =========================
+           SCROLL
+        ========================= */
+
+        .scroll-line {
+
+            width: 1px;
+
+            height: 50px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #00A8FF,
+                    transparent
+                );
+
+            animation: scrollPulse 2s infinite;
+
+        }
+
+        @keyframes scrollPulse {
+
+            0%, 100% {
+                opacity: 0.25;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header
+    class="fixed top-0 left-0 w-full z-50
+           glass-card border-b border-gray-800">
+
+    <div
+        class="max-w-7xl mx-auto px-6 py-4
+               flex justify-between items-center">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html"
+           class="flex items-center space-x-3">
+
+            <div>
+
+                <div
+                    class="text-2xl font-black
+                           tracking-wider gradient-text">
+
+                    ATGNEXA
+
+                </div>
+
+                <div
+                    class="text-[9px] text-gray-500
+                           tracking-[0.25em] uppercase">
+
+                    AVINYA TECHNO GROUP
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- DESKTOP NAV -->
+
+       <nav class="hidden lg:flex items-center gap-8 text-sm"> 
+        <a href="index.html" class="nav-link text-white"> Home </a> 
+        <a href="fotonvr.html" class="nav-link text-gray-400 hover:text-white"> fotonVR </a> 
+        <a href="robotics.html" class="nav-link text-gray-400 hover:text-white"> Robotics </a> 
+        <a href="it-accessories.html" class="nav-link text-gray-400 hover:text-white"> IT Accessories </a>
+         <a href="contact.html" class="nav-link text-gray-400 hover:text-white"> Contact </a> 
+        </nav> 
+
+        <!-- SHOP BUTTON -->
+
+      <a
+        href="shop.html"
+        class="hidden lg:inline-flex primary-btn px-5 py-2.5 rounded-xl font-semibold"
+      >
+        Shop Now
+      </a>
+
+        <!-- MOBILE BUTTON -->
+          <button onclick="toggleMenu()" class="lg:hidden text-2xl text-gray-300"> ☰ </button> 
+        </div> 
+        <!-- MOBILE MENU --> 
+         <div id="mobileMenu" class="lg:hidden px-6 pb-6"> 
+            <div class="glass-card rounded-2xl p-5 space-y-4"> 
+                <a href="index.html" class="block text-gray-200"> Home </a> 
+                <a href="fotonvr.html" class="block text-gray-300"> fotonVR </a> 
+                <a href="robotics.html" class="block text-gray-300"> Robotics </a> 
+                <a href="it-accessories.html" class="block text-gray-300"> IT Accessories </a> 
+                <a href="shop.html" class="block text-cyan-400 font-semibold"> Shop </a> 
+                <a href="contact.html" class="block text-gray-300"> Contact </a> 
+            </div> 
+        </div> 
+    </div> 
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    id="hero"
+    class="pt-40 pb-24 px-6
+           min-h-screen
+           flex items-center
+           relative
+           overflow-hidden
+           grid-background">
+
+
+    <!-- ORBS -->
+
+    <div
+        class="orb blue-orb
+               w-96 h-96
+               -top-20
+               left-10">
+    </div>
+
+
+    <div
+        class="orb red-orb
+               w-96 h-96
+               right-0
+               top-1/3">
+    </div>
+
+
+    <div
+        class="max-w-7xl
+               mx-auto
+               w-full
+               relative z-10">
+
+
+        <div
+            class="grid
+                   lg:grid-cols-2
+                   gap-16
+                   items-center">
+
+
+            <!-- HERO LEFT -->
+
+            <div
+                class="hero-animation">
+
+
+                <span
+                    class="inline-block
+                           px-4 py-1.5
+                           rounded-full
+                           text-xs
+                           font-semibold
+                           uppercase
+                           tracking-widest
+                           text-cyan-400
+                           bg-cyan-950/40
+                           border
+                           border-cyan-800/50">
+
+                    A Division of Avinya Techno Group
+
+                </span>
+
+
+                <h1
+                    class="mt-6
+                           text-5xl
+                           md:text-7xl
+                           font-extrabold
+                           tracking-tight
+                           leading-tight">
+
+                    YOUR TECH.
+
+                    <br>
+
+                    <span class="gradient-text">
+
+                        OUR PRIORITY.
+
+                    </span>
+
+                </h1>
+
+
+                <p
+                    class="mt-6
+                           text-lg
+                           text-gray-400
+                           max-w-2xl
+                           leading-relaxed">
+
+                    Empowering education, innovation and
+                    technology adoption with advanced
+
+                    <span class="text-white font-semibold">
+                        Robotics
+                    </span>,
+
+                    immersive
+
+                    <span class="text-white font-semibold">
+                        VR solutions
+                    </span>,
+
+                    AI & STEM technologies and
+                    high-performance
+
+                    <span class="text-white font-semibold">
+                        IT accessories
+                    </span>.
+
+                </p>
+
+
+                <div
+                    class="mt-10
+                           flex
+                           flex-wrap
+                           gap-4">
+
+
+                    <a
+                        href="shop.html"
+                        class="btn-hover
+                               px-8 py-3.5
+                               rounded-xl
+                               font-bold
+                               bg-gradient-to-r
+                               from-cyan-500
+                               to-blue-600
+                               text-white
+                               shadow-lg
+                               shadow-cyan-500/20">
+
+                        Explore Products →
+
+                    </a>
+
+
+                    <a
+                        href="contact.html"
+                        class="btn-hover
+                               px-8 py-3.5
+                               rounded-xl
+                               font-bold
+                               glass-card
+                               text-gray-200
+                               hover:bg-white/10">
+
+                        Contact Sales
+
+                    </a>
+
+                </div>
+
+
+                <!-- SMALL TRUST LINE -->
+
+                <div
+                    class="mt-9
+                           flex
+                           flex-wrap
+                           gap-3
+                           text-sm
+                           text-gray-500">
+
+                    <span>Robotics</span>
+
+                    <span class="text-cyan-500">•</span>
+
+                    <span>AI</span>
+
+                    <span class="text-cyan-500">•</span>
+
+                    <span>VR</span>
+
+                    <span class="text-cyan-500">•</span>
+
+                    <span>STEM</span>
+
+                    <span class="text-cyan-500">•</span>
+
+                    <span>IT Accessories</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO RIGHT -->
+
+            <div
+                class="hidden md:block
+                       relative">
+
+
+                <div
+                    class="absolute
+                           inset-0
+                           bg-blue-500/10
+                           rounded-full
+                           blur-3xl">
+
+                </div>
+
+
+                <div
+                    class="relative
+                           glass-card
+                           rounded-3xl
+                           p-6
+                           blue-glow">
+
+
+                    <div
+                        class="grid
+                               grid-cols-2
+                               gap-4">
+
+
+                        <!-- ROBOTICS -->
+
+                        <div
+                            class="floating-card
+                                   glass-card
+                                   rounded-2xl
+                                   p-6
+                                   border-red-500/10">
+
+
+                            <div
+                                class="w-12 h-12
+                                       rounded-xl
+                                       bg-red-500/10
+                                       flex items-center
+                                       justify-center
+                                       text-2xl">
+
+                                🤖
+
+                            </div>
+
+
+                            <h3
+                                class="mt-5
+                                       font-bold
+                                       text-lg">
+
+                                Robotics
+
+                            </h3>
+
+
+                            <p
+                                class="mt-2
+                                       text-xs
+                                       text-gray-500">
+
+                                AI • Coding • Automation
+
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- VR -->
+
+                        <div
+                            class="floating-card-delay
+                                   glass-card
+                                   rounded-2xl
+                                   p-6
+                                   border-cyan-500/10">
+
+
+                            <div
+                                class="w-12 h-12
+                                       rounded-xl
+                                       bg-cyan-500/10
+                                       flex items-center
+                                       justify-center
+                                       text-2xl">
+
+                                🥽
+
+                            </div>
+
+
+                            <h3
+                                class="mt-5
+                                       font-bold
+                                       text-lg">
+
+                                fotonVR
+
+                            </h3>
+
+
+                            <p
+                                class="mt-2
+                                       text-xs
+                                       text-gray-500">
+
+                                Immersive Learning
+
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- AI -->
+
+                        <div
+                            class="floating-card-delay
+                                   glass-card
+                                   rounded-2xl
+                                   p-6">
+
+
+                            <div
+                                class="w-12 h-12
+                                       rounded-xl
+                                       bg-purple-500/10
+                                       flex items-center
+                                       justify-center
+                                       text-2xl">
+
+                                🧠
+
+                            </div>
+
+
+                            <h3
+                                class="mt-5
+                                       font-bold
+                                       text-lg">
+
+                                AI & STEM
+
+                            </h3>
+
+
+                            <p
+                                class="mt-2
+                                       text-xs
+                                       text-gray-500">
+
+                                Future-ready Learning
+
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- IT -->
+
+                        <div
+                            class="floating-card
+                                   glass-card
+                                   rounded-2xl
+                                   p-6">
+
+
+                            <div
+                                class="w-12 h-12
+                                       rounded-xl
+                                       bg-blue-500/10
+                                       flex items-center
+                                       justify-center
+                                       text-2xl">
+
+                                💻
+
+                            </div>
+
+
+                            <h3
+                                class="mt-5
+                                       font-bold
+                                       text-lg">
+
+                                IT Accessories
+
+                            </h3>
+
+
+                            <p
+                                class="mt-2
+                                       text-xs
+                                       text-gray-500">
+
+                                Tools • Hardware • Peripherals
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOTTOM -->
+
+                    <div
+                        class="mt-5
+                               rounded-2xl
+                               p-5
+                               bg-gradient-to-r
+                               from-cyan-500/10
+                               to-red-500/10
+                               border
+                               border-white/5">
+
+
+                        <div
+                            class="flex
+                                   items-center
+                                   justify-between">
+
+
+                            <div>
+
+                                <p
+                                    class="text-xs
+                                           text-gray-500">
+
+                                    Technology Ecosystem
+
+                                </p>
+
+
+                                <p
+                                    class="mt-1
+                                           font-bold">
+
+                                    Innovate · Learn · Build
+
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                class="text-3xl">
+
+                                ⚡
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCROLL -->
+
+        <div
+            class="hidden md:flex
+                   absolute
+                   bottom-5
+                   left-1/2
+                   -translate-x-1/2
+                   flex-col
+                   items-center
+                   gap-2">
+
+            <span
+                class="text-[9px]
+                       uppercase
+                       tracking-widest
+                       text-gray-600">
+
+                Explore
+
+            </span>
+
+            <div class="scroll-line"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="py-20 px-6">
+
+    <div
+        class="max-w-4xl
+               mx-auto
+               text-center">
+
+
+        <span
+            class="text-cyan-400
+                   text-xs
+                   font-semibold
+                   uppercase
+                   tracking-widest">
+
+            Welcome to ATGNEXA
+
+        </span>
+
+
+        <h2
+            class="mt-4
+                   text-3xl
+                   md:text-5xl
+                   font-black">
+
+            Technology designed to
+
+            <span class="gradient-text">
+                move ideas forward.
+            </span>
+
+        </h2>
+
+
+        <p
+            class="mt-6
+                   text-gray-400
+                   text-lg
+                   leading-relaxed">
+
+            ATGNEXA is a technology store by Avinya Techno
+            Group focused on bringing innovative products,
+            educational technology and practical tools
+            together in one ecosystem.
+
+            From AI and robotics labs to immersive VR
+            learning and everyday technology accessories,
+            we help schools, institutions, businesses and
+            technology enthusiasts discover better ways
+            to learn, build and innovate.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     THREE CORE PILLARS
+========================================================= -->
+
+<section
+    id="solutions"
+    class="py-20 px-6
+           bg-[#090D17]
+           border-y border-white/5">
+
+
+    <div
+        class="max-w-7xl
+               mx-auto">
+
+
+        <div
+            class="text-center
+                   mb-14">
+
+
+            <span
+                class="text-cyan-400
+                       text-xs
+                       font-semibold
+                       uppercase
+                       tracking-widest">
+
+                Our Technology Areas
+
+            </span>
+
+
+            <h2
+                class="mt-4
+                       text-3xl
+                       md:text-5xl
+                       font-black">
+
+                What We
+
+                <span class="gradient-text">
+                    Offer
+                </span>
+
+            </h2>
+
+
+            <p
+                class="mt-5
+                       max-w-2xl
+                       mx-auto
+                       text-gray-400">
+
+                Explore our core technology solutions
+                designed for education, innovation and
+                modern technology environments.
+
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="grid
+                   md:grid-cols-3
+                   gap-8">
+
+
+            <!-- ROBOTICS -->
+
+            <div
+                id="robotics"
+                class="solution-card
+                       glass-card
+                       p-8
+                       rounded-2xl
+                       glow-red">
+
+
+                <div
+                    class="w-14 h-14
+                           rounded-xl
+                           bg-red-500/10
+                           flex items-center
+                           justify-center
+                           text-red-500
+                           text-2xl">
+
+                    🤖
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-xl
+                           font-bold
+                           text-white">
+
+                    Robotics
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-gray-400
+                           text-sm
+                           leading-relaxed">
+
+                    AI & Robotics Lab solutions for schools
+                    with robotics kits, coding platforms,
+                    electronics, AI learning and hands-on
+                    innovation programs.
+
+                </p>
+
+
+                <a
+                    href="robotics.html"
+                    class="mt-6
+                           inline-block
+                           text-sm
+                           font-semibold
+                           text-red-400
+                           hover:text-red-300">
+
+                    View Robotics Line →
+
+                </a>
+
+            </div>
+
+
+
+            <!-- VR -->
+
+            <div
+                id="vr"
+                class="solution-card
+                       glass-card
+                       p-8
+                       rounded-2xl
+                       glow-blue">
+
+
+                <div
+                    class="w-14 h-14
+                           rounded-xl
+                           bg-cyan-500/10
+                           flex items-center
+                           justify-center
+                           text-cyan-400
+                           text-2xl">
+
+                    🥽
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-xl
+                           font-bold
+                           text-white">
+
+                    VR Solutions
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-gray-400
+                           text-sm
+                           leading-relaxed">
+
+                    Immersive fotonVR learning solutions that
+                    help students explore curriculum concepts
+                    through interactive 3D experiences.
+
+                </p>
+
+
+                <a
+                    href="fotonvr.html"
+                    class="mt-6
+                           inline-block
+                           text-sm
+                           font-semibold
+                           text-cyan-400
+                           hover:text-cyan-300">
+
+                    Explore VR Solutions →
+
+                </a>
+
+            </div>
+
+
+
+            <!-- IT -->
+
+            <div
+                id="accessories"
+                class="solution-card
+                       glass-card
+                       p-8
+                       rounded-2xl
+                       glow-red">
+
+
+                <div
+                    class="w-14 h-14
+                           rounded-xl
+                           bg-purple-500/10
+                           flex items-center
+                           justify-center
+                           text-purple-400
+                           text-2xl">
+
+                    💻
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-xl
+                           font-bold
+                           text-white">
+
+                    IT Accessories
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-gray-400
+                           text-sm
+                           leading-relaxed">
+
+                    Practical tools and accessories for
+                    3D printing, workshops, makerspaces,
+                    technology labs and professional use.
+
+                </p>
+
+
+                <a
+                    href="it-accessories.html"
+                    class="mt-6
+                           inline-block
+                           text-sm
+                           font-semibold
+                           text-purple-400
+                           hover:text-purple-300">
+
+                    Browse Accessories →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ACCESSORIES SHORT PREVIEW
+========================================================= -->
+
+<section class="py-20 px-6">
+
+    <div
+        class="max-w-7xl
+               mx-auto">
+
+
+        <div
+            class="grid
+                   lg:grid-cols-2
+                   gap-14
+                   items-center">
+
+
+            <div>
+
+
+                <span
+                    class="text-purple-400
+                           text-xs
+                           font-semibold
+                           uppercase
+                           tracking-widest">
+
+                    IT Accessories
+
+                </span>
+
+
+                <h2
+                    class="mt-4
+                           text-3xl
+                           md:text-5xl
+                           font-black">
+
+                    Practical tools for
+
+                    <span class="gradient-text">
+                        makers & creators.
+                    </span>
+
+                </h2>
+
+
+                <p
+                    class="mt-6
+                           text-gray-400
+                           leading-relaxed">
+
+                    Discover useful accessories for 3D
+                    printing, fabrication, technology
+                    workshops and makerspaces.
+
+                </p>
+
+
+                <a
+                    href="it-accessories.html"
+                    class="inline-block
+                           mt-7
+                           px-6 py-3
+                           rounded-xl
+                           gradient-border
+                           font-semibold">
+
+                    View IT Accessories →
+
+                </a>
+
+            </div>
+
+
+
+            <div
+                class="grid
+                       grid-cols-2
+                       sm:grid-cols-3
+                       gap-4">
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        📦
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        Filament Storage Box
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        🔥
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        Filament Dryer
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        📏
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        Digital Vernier Caliper
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        🧰
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        3D Printer Tool Kit
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        ✂️
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        Precision Cutter
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-5
+                           hover:-translate-y-1
+                           transition">
+
+                    <div class="text-3xl">
+                        🔧
+                    </div>
+
+                    <p class="mt-4 text-sm font-semibold">
+                        Nozzle Cleaning Set
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ROBOTICS PREVIEW
+========================================================= -->
+
+<section
+    class="py-20 px-6
+           bg-[#090D17]
+           border-y border-white/5">
+
+
+    <div
+        class="max-w-7xl
+               mx-auto">
+
+
+        <div
+            class="glass-card
+                   rounded-3xl
+                   p-8 md:p-12
+                   relative
+                   overflow-hidden">
+
+
+            <div
+                class="orb red-orb
+                       w-80 h-80
+                       right-0
+                       top-0">
+            </div>
+
+
+            <div
+                class="relative z-10
+                       grid
+                       lg:grid-cols-2
+                       gap-12
+                       items-center">
+
+
+                <div>
+
+
+                    <span
+                        class="text-red-400
+                               text-xs
+                               font-semibold
+                               uppercase
+                               tracking-widest">
+
+                        AI & Robotics Lab Solutions
+
+                    </span>
+
+
+                    <h2
+                        class="mt-4
+                               text-3xl
+                               md:text-5xl
+                               font-black">
+
+                        Build the
+
+                        <span class="gradient-text">
+                            innovators
+                        </span>
+
+                        of tomorrow.
+
+                    </h2>
+
+
+                    <p
+                        class="mt-6
+                               text-gray-400
+                               leading-relaxed">
+
+                        Transform schools into future-ready
+                        innovation hubs with robotics,
+                        coding, artificial intelligence,
+                        IoT, electronics and experiential
+                        technology learning.
+
+                    </p>
+
+
+                    <div
+                        class="mt-6
+                               flex
+                               flex-wrap
+                               gap-3">
+
+
+                        <span
+                            class="px-4 py-2
+                                   rounded-full
+                                   bg-white/5
+                                   text-sm
+                                   text-gray-300">
+
+                            AI & ML
+
+                        </span>
+
+
+                        <span
+                            class="px-4 py-2
+                                   rounded-full
+                                   bg-white/5
+                                   text-sm
+                                   text-gray-300">
+
+                            Robotics
+
+                        </span>
+
+
+                        <span
+                            class="px-4 py-2
+                                   rounded-full
+                                   bg-white/5
+                                   text-sm
+                                   text-gray-300">
+
+                            IoT
+
+                        </span>
+
+
+                        <span
+                            class="px-4 py-2
+                                   rounded-full
+                                   bg-white/5
+                                   text-sm
+                                   text-gray-300">
+
+                            Python
+
+                        </span>
+
+
+                        <span
+                            class="px-4 py-2
+                                   rounded-full
+                                   bg-white/5
+                                   text-sm
+                                   text-gray-300">
+
+                            AR / VR
+
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="robotics.html"
+                        class="inline-block
+                               mt-8
+                               px-6 py-3
+                               rounded-xl
+                               bg-gradient-to-r
+                               from-red-500
+                               to-red-600
+                               font-bold">
+
+                        Explore Robotics →
+
+                    </a>
+
+                </div>
+
+
+
+                <div
+                    class="grid
+                           grid-cols-2
+                           gap-4">
+
+
+                    <div
+                        class="glass-card
+                               rounded-2xl
+                               p-6">
+
+                        <div class="text-4xl">
+                            🤖
+                        </div>
+
+                        <h3 class="mt-4 font-bold">
+                            Robotics Kits
+                        </h3>
+
+                        <p class="mt-2 text-xs text-gray-500">
+                            Build & experiment
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="glass-card
+                               rounded-2xl
+                               p-6">
+
+                        <div class="text-4xl">
+                            🧠
+                        </div>
+
+                        <h3 class="mt-4 font-bold">
+                            AI Learning
+                        </h3>
+
+                        <p class="mt-2 text-xs text-gray-500">
+                            Intelligent systems
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="glass-card
+                               rounded-2xl
+                               p-6">
+
+                        <div class="text-4xl">
+                            💻
+                        </div>
+
+                        <h3 class="mt-4 font-bold">
+                            Coding
+                        </h3>
+
+                        <p class="mt-2 text-xs text-gray-500">
+                            Block & Python
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="glass-card
+                               rounded-2xl
+                               p-6">
+
+                        <div class="text-4xl">
+                            ⚡
+                        </div>
+
+                        <h3 class="mt-4 font-bold">
+                            Innovation
+                        </h3>
+
+                        <p class="mt-2 text-xs text-gray-500">
+                            Real-world projects
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOTONVR PREVIEW
+========================================================= -->
+
+<section class="py-20 px-6">
+
+    <div
+        class="max-w-7xl
+               mx-auto">
+
+
+        <div
+            class="grid
+                   lg:grid-cols-2
+                   gap-14
+                   items-center">
+
+
+            <div
+                class="grid
+                       grid-cols-2
+                       gap-5">
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-7
+                           hover:-translate-y-2
+                           transition">
+
+                    <div class="text-4xl">
+                        🔬
+                    </div>
+
+                    <h3 class="mt-4 font-bold">
+                        Science
+                    </h3>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-7
+                           hover:-translate-y-2
+                           transition">
+
+                    <div class="text-4xl">
+                        🧬
+                    </div>
+
+                    <h3 class="mt-4 font-bold">
+                        Biology
+                    </h3>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-7
+                           hover:-translate-y-2
+                           transition">
+
+                    <div class="text-4xl">
+                        🪐
+                    </div>
+
+                    <h3 class="mt-4 font-bold">
+                        Space
+                    </h3>
+
+                </div>
+
+
+                <div
+                    class="glass-card
+                           rounded-2xl
+                           p-7
+                           hover:-translate-y-2
+                           transition">
+
+                    <div class="text-4xl">
+                        📐
+                    </div>
+
+                    <h3 class="mt-4 font-bold">
+                        Mathematics
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+
+                <span
+                    class="text-cyan-400
+                           text-xs
+                           font-semibold
+                           uppercase
+                           tracking-widest">
+
+                    fotonVR Learning Solutions
+
+                </span>
+
+
+                <h2
+                    class="mt-4
+                           text-3xl
+                           md:text-5xl
+                           font-black">
+
+                    Learning becomes
+
+                    <span class="gradient-text">
+                        an experience.
+                    </span>
+
+                </h2>
+
+
+                <p
+                    class="mt-6
+                           text-gray-400
+                           leading-relaxed">
+
+                    Bring immersive virtual reality into
+                    the classroom with fotonVR learning
+                    experiences.
+
+                    Students can explore concepts through
+                    interactive 3D environments instead of
+                    relying only on traditional diagrams
+                    and textbooks.
+
+                </p>
+
+
+                <a
+                    href="fotonvr.html"
+                    class="inline-block
+                           mt-8
+                           px-6 py-3
+                           rounded-xl
+                           bg-gradient-to-r
+                           from-cyan-500
+                           to-blue-600
+                           font-bold">
+
+                    Explore fotonVR →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PARENT COMPANY
+========================================================= -->
+
+<section class="py-14 px-6">
+
+    <div
+        class="max-w-7xl
+               mx-auto">
+
+
+        <div
+            class="glass-card
+                   rounded-2xl
+                   p-8
+                   text-center
+                   border-t-2
+                   border-red-500/40">
+
+
+            <h4
+                class="text-xs
+                       uppercase
+                       tracking-widest
+                       text-gray-400
+                       font-semibold">
+
+                Backed by Industry Leadership
+
+            </h4>
+
+
+            <p
+                class="text-2xl
+                       font-bold
+                       text-white
+                       mt-2">
+
+                AVINYA TECHNO GROUP
+
+            </p>
+
+
+            <p
+                class="text-sm
+                       text-gray-400
+                       mt-2
+                       max-w-xl
+                       mx-auto">
+
+                Delivering technology, innovation,
+                education and high-performance solutions
+                for a rapidly changing digital world.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section
+    class="py-24 px-6
+           relative
+           overflow-hidden">
+
+
+    <div
+        class="orb blue-orb
+               w-96 h-96
+               left-1/4
+               top-0">
+    </div>
+
+
+    <div
+        class="orb red-orb
+               w-80 h-80
+               right-1/4
+               bottom-0">
+    </div>
+
+
+    <div
+        class="max-w-4xl
+               mx-auto
+               text-center
+               relative z-10">
+
+
+        <span
+            class="text-cyan-400
+                   text-xs
+                   font-semibold
+                   uppercase
+                   tracking-widest">
+
+            Start Exploring
+
+        </span>
+
+
+        <h2
+            class="mt-5
+                   text-4xl
+                   md:text-6xl
+                   font-black">
+
+            Your next technology
+
+            <span class="gradient-text">
+                starts here.
+            </span>
+
+        </h2>
+
+
+        <p
+            class="mt-6
+                   text-gray-400
+                   text-lg
+                   max-w-2xl
+                   mx-auto">
+
+            Explore our technology products and solutions
+            or speak with our team about your requirements.
+
+        </p>
+
+
+        <div
+            class="mt-9
+                   flex
+                   flex-wrap
+                   justify-center
+                   gap-4">
+
+
+            <a
+                href="shop.html"
+                class="btn-hover
+                       px-8 py-4
+                       rounded-xl
+                       bg-gradient-to-r
+                       from-cyan-500
+                       to-blue-600
+                       font-bold">
+
+                Visit Shop →
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="btn-hover
+                       px-8 py-4
+                       rounded-xl
+                       glass-card
+                       font-bold">
+
+                Contact Us
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer
+    class="border-t
+           border-white/5
+           bg-[#070A12]">
+
+
+    <div
+        class="max-w-7xl
+               mx-auto
+               px-6
+               py-14">
+
+
+        <div
+            class="grid
+                   md:grid-cols-4
+                   gap-10">
+
+
+            <!-- BRAND -->
+
+            <div class="md:col-span-2">
+
+
+                <div
+                    class="text-2xl
+                           font-black
+                           tracking-wider
+                           gradient-text">
+
+                    ATGNEXA
+
+                </div>
+
+
+                <p
+                    class="mt-5
+                           max-w-md
+                           text-sm
+                           text-gray-500
+                           leading-relaxed">
+
+                    A technology store by Avinya Techno
+                    Group L.L.P — Robotics, VR, AI & STEM
+                    solutions.
+
+                </p>
+
+
+                <p
+                    class="mt-4
+                           text-xs
+                           text-gray-600">
+
+                    Innovate · Secure · Automate · Connect
+
+                </p>
+
+            </div>
+
+
+
+            <!-- QUICK LINKS -->
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Quick Links
+                </h4>
+
+
+                <div
+                    class="space-y-3
+                           text-sm
+                           text-gray-500">
+
+
+                    <a
+                        href="index.html"
+                        class="block hover:text-cyan-400">
+
+                        Home
+
+                    </a>
+
+
+                    <a
+                        href="shop.html"
+                        class="block hover:text-cyan-400">
+
+                        Shop
+
+                    </a>
+
+
+                    <a
+                        href="fotonvr.html"
+                        class="block hover:text-cyan-400">
+
+                        fotonVR
+
+                    </a>
+
+
+                    <a
+                        href="robotics.html"
+                        class="block hover:text-cyan-400">
+
+                        AI & Robotics
+
+                    </a>
+
+
+                    <a
+                        href="it-accessories.html"
+                        class="block hover:text-cyan-400">
+
+                        IT Accessories
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Contact
+                </h4>
+
+
+                <div
+                    class="space-y-4
+                           text-sm
+                           text-gray-500">
+
+
+                    <p>
+
+                        📍 2nd Floor, Hiranya Complex,
+                        Opp. Pragathi Hospital, Bolwar,
+                        Puttur, Dakshina Kannada,
+                        Karnataka – 574201
+
+                    </p>
+
+
+                    <p>
+
+                        ✉️
+
+                        <a
+                            href="mailto:sales@avinya-group.com"
+                            class="hover:text-cyan-400">
+
+                            sales@avinya-group.com
+
+                        </a>
+
+                    </p>
+
+
+                    <p>
+
+                        📞
+
+                        <a
+                            href="tel:+917022794801"
+                            class="hover:text-cyan-400">
+
+                            +91 70227 94801
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div
+            class="mt-12
+                   pt-6
+                   border-t
+                   border-white/5
+                   flex
+                   flex-col
+                   md:flex-row
+                   justify-between
+                   gap-4
+                   text-xs
+                   text-gray-600">
+
+
+            <p>
+
+                © 2026 Avinya Techno Group L.L.P.
+                All rights reserved.
+
+            </p>
+
+
+            <p>
+
+                ATGNEXA — Your Tech. Our Priority.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     WHATSAPP BUTTON
+========================================================= -->
+
+<a
+    href="https://wa.me/917022794801"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat on WhatsApp"
+    class="fixed
+           bottom-6
+           right-6
+           z-50
+           w-14
+           h-14
+           rounded-full
+           bg-green-500
+           flex
+           items-center
+           justify-center
+           shadow-2xl
+           hover:scale-110
+           transition">
+
+
+    <svg
+        viewBox="0 0 32 32"
+        fill="#fff"
+        width="28"
+        height="28"
+        xmlns="http://www.w3.org/2000/svg">
+
+        <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.697 4.61 1.902 6.484L4 29l7.72-1.855A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16.001 3zm.001 21.75c-1.89 0-3.66-.523-5.17-1.43l-.371-.22-4.586 1.102 1.127-4.47-.242-.386A9.71 9.71 0 0 1 5.25 15c0-5.937 4.813-10.75 10.75-10.75S26.75 9.063 26.75 15 21.938 24.75 16.001 24.75zm5.598-8.06c-.307-.154-1.815-.895-2.096-.997-.281-.102-.486-.153-.69.154-.204.307-.792.997-.972 1.202-.179.204-.358.23-.665.077-.307-.154-1.297-.478-2.47-1.523-.913-.814-1.53-1.82-1.71-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.384-.026-.537-.077-.154-.69-1.664-.946-2.28-.249-.599-.502-.518-.69-.527-.179-.008-.384-.01-.588-.01-.204 0-.537.077-.818.384-.281.307-1.073 1.049-1.073 2.559 0 1.51 1.099 2.969 1.252 3.174.153.204 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.646.734.233 1.402.2 1.93.122.589-.088 1.815-.742 2.071-1.459.256-.717.256-1.331.179-1.459-.077-.128-.281-.204-.588-.358z"/>
+
+    </svg>
+
+</a>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+function toggleMenu() {
+
+    const menu = document.getElementById("mobileMenu");
+
+    menu.classList.toggle("active");
+
+}
+
+</script>
+
+
+</body>
+
+</html>

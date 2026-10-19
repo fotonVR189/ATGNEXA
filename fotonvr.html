@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR Learning Labs | fotonVR by ATGNEXA</title>
+  <meta name="description" content="ATGNEXA's fotonVR Learning Labs bring curriculum-aligned virtual reality content to schools. Book a free demo.">
+  <meta name="theme-color" content="#0B0F19">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+            poppins: ["Poppins", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #0B0F19;
+      --panel: #111A2B;
+      --cyan: #00A8FF;
+      --blue: #315CFF;
+      --red: #E60023;
+      --white: #F3F4F6;
+      --muted: #AAB6C8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--white);
+      font-family: "Inter", sans-serif;
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    section[id] {
+      scroll-margin-top: 100px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #35C7FF 0%, #00A8FF 45%, #FF4565 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Gradient border without mask-related CSS errors */
+    .gradient-border {
+      position: relative;
+      isolation: isolate;
+      border: 1px solid transparent;
+      border-radius: 24px;
+      background:
+        linear-gradient(#0B0F19, #0B0F19) padding-box,
+        linear-gradient(135deg, #00A8FF, #315CFF 48%, #E60023) border-box;
+      transition: box-shadow .35s ease, transform .35s ease;
+    }
+
+    .gradient-border:hover {
+      box-shadow:
+        0 0 25px rgba(0, 168, 255, .12),
+        0 0 32px rgba(230, 0, 35, .07);
+    }
+
+    .glass-card {
+      background: linear-gradient(
+        145deg,
+        rgba(22, 35, 58, .88),
+        rgba(12, 18, 32, .96)
+      );
+      border: 1px solid rgba(126, 180, 255, .15);
+      border-radius: 20px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .18);
+      transition:
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0, 168, 255, .35);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(circle at 15% 25%, rgba(0,168,255,.15), transparent 32%),
+        radial-gradient(circle at 85% 30%, rgba(230,0,35,.12), transparent 32%),
+        linear-gradient(180deg, rgba(11,15,25,.15), #0B0F19);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      opacity: .18;
+    }
+
+    .orb-blue {
+      width: 300px;
+      height: 300px;
+      background: #00A8FF;
+      left: -150px;
+      top: 200px;
+    }
+
+    .orb-red {
+      width: 300px;
+      height: 300px;
+      background: #E60023;
+      right: -150px;
+      top: 600px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: .15; transform: scale(1); }
+      50% { opacity: .28; transform: scale(1.08); }
+    }
+
+    .pulse {
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .nav-link {
+      position: relative;
+      color: #AAB6C8;
+      transition: color .3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #FFFFFF;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 0;
+      left: 0;
+      bottom: -8px;
+      background: linear-gradient(90deg, #00A8FF, #E60023);
+      transition: width .3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .primary-btn {
+      color: white;
+      background: linear-gradient(115deg, #008FE0, #00A8FF 48%, #E60023);
+      background-size: 200% 200%;
+      box-shadow: 0 8px 24px rgba(0,168,255,.14);
+      transition: background-position .35s ease, box-shadow .35s ease, transform .35s ease;
+    }
+
+    .primary-btn:hover {
+      background-position: 100% 50%;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,168,255,.23);
+    }
+
+    .secondary-btn {
+      color: #F3F4F6;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(148,163,184,.25);
+      transition: all .3s ease;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(0,168,255,.09);
+      border-color: #00A8FF;
+      transform: translateY(-2px);
+    }
+
+    .image-container {
+      overflow: hidden;
+    }
+
+    .image-container img {
+      transition: transform .7s ease;
+    }
+
+    .image-container:hover img {
+      transform: scale(1.04);
+    }
+
+    .subject-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,168,255,.17);
+      background: linear-gradient(145deg, rgba(20,43,68,.78), rgba(14,19,34,.96));
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .subject-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00A8FF, #E60023, transparent);
+      opacity: .8;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,168,255,.5);
+      box-shadow: 0 16px 35px rgba(0,168,255,.12);
+    }
+
+    .glow-blue:hover {
+      box-shadow: 0 0 24px rgba(0,168,255,.15);
+    }
+
+    .glow-red:hover {
+      box-shadow: 0 0 24px rgba(230,0,35,.15);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    details {
+      border: 1px solid rgba(126,180,255,.15);
+      background: linear-gradient(135deg, rgba(20,35,57,.8), rgba(12,17,30,.96));
+      border-radius: 18px;
+      padding: 20px 22px;
+      transition: border-color .3s ease, box-shadow .3s ease;
+    }
+
+    details:hover,
+    details[open] {
+      border-color: rgba(0,168,255,.45);
+      box-shadow: 0 8px 25px rgba(0,168,255,.06);
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary::after {
+      content: "+";
+      float: right;
+      font-size: 22px;
+      color: #35C7FF;
+    }
+
+    details[open] summary::after {
+      content: "−";
+      color: #FF4565;
+    }
+
+    details p {
+      color: #AAB6C8;
+      line-height: 1.8;
+      margin-top: 15px;
+    }
+
+    #mobileMenu {
+      display: none;
+    }
+
+    #mobileMenu.open {
+      display: block;
+    }
+
+    .whatsapp {
+      transition: transform .3s ease;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/90 backdrop-blur-xl border-b border-[#00A8FF]/20 shadow-lg shadow-black/20">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="ATGNEXA home">
+             <!-- LOGO -->
+
+      <a href="index.html" class="flex items-center gap-3">
+
+        <img
+          src="assets/logo.png"
+          alt="Avinya Techno Group logo"
+          class="h-10 w-auto object-contain"
+          onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
+        >
+
+        <div
+          id="logoFallback"
+          class="hidden"
+        >
+
+          <div class="text-2xl font-black gradient-text">
+            ATGNEXA
+          </div>
+
+          <div class="text-[9px] uppercase tracking-[.2em] text-gray-500">
+            by Avinya Techno Group
+          </div>
+
+        </div>
+
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="fotonvr.html" class="nav-link active" aria-current="page">fotonVR</a>
+        <a href="robotics.html" class="nav-link">Robotics</a>
+        <a href="it-accessories.html" class="nav-link">IT Accessories</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="shop.html" class="hidden lg:inline-flex primary-btn px-5 py-2.5 rounded-xl font-semibold">
+        Shop Now
+      </a>
+
+      <button
+        id="menuButton"
+        type="button"
+        class="lg:hidden w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"
+        aria-label="Toggle navigation"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+      >
+        <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="lg:hidden pb-5">
+      <nav class="glass-card rounded-2xl p-4 space-y-1" aria-label="Mobile navigation">
+        <a href="index.html" class="block px-4 py-3 rounded-xl hover:bg-white/5">Home</a>
+        <a href="fotonvr.html" class="block px-4 py-3 rounded-xl bg-white/5 text-white" aria-current="page">fotonVR</a>
+        <a href="robotics.html" class="block px-4 py-3 rounded-xl hover:bg-white/5">Robotics</a>
+        <a href="it-accessories.html" class="block px-4 py-3 rounded-xl hover:bg-white/5">IT Accessories</a>
+        <a href="shop.html" class="block px-4 py-3 rounded-xl hover:bg-white/5">Shop</a>
+        <a href="contact.html" class="block px-4 py-3 rounded-xl hover:bg-white/5">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="relative min-h-screen pt-32 pb-20 overflow-hidden grid-bg hero-bg">
+    <div class="orb orb-blue pulse"></div>
+    <div class="orb orb-red pulse"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center min-h-[75vh]">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 glass-card px-4 py-2 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#00A8FF] shadow-[0_0_15px_#00A8FF]"></span>
+            <span class="text-sm text-gray-300">fotonVR Learning Labs</span>
+          </div>
+
+          <h1 class="mt-7 font-poppins text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02]">
+            VR-Based
+            <span class="gradient-text block">Learning Labs</span>
+            for Your Classroom
+          </h1>
+
+          <p class="mt-7 text-lg md:text-xl leading-relaxed text-gray-400 max-w-2xl">
+            A hands-on, curriculum-aligned VR learning lab that helps students explore lessons in 3D, built on fotonVR's content platform.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a href="#contact" class="primary-btn px-6 py-3.5 rounded-xl font-semibold inline-flex items-center gap-2">
+              Book a Free Demo <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#lab" class="secondary-btn px-6 py-3.5 rounded-xl font-semibold">Explore the Lab</a>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-8">
+            <div>
+              <div class="text-2xl font-black gradient-text">1,200+</div>
+              <p class="text-xs text-gray-500 mt-1">Schools*</p>
+            </div>
+            <div>
+              <div class="text-2xl font-black gradient-text">1.5M+</div>
+              <p class="text-xs text-gray-500 mt-1">Students Reached*</p>
+            </div>
+            <div>
+              <div class="text-2xl font-black gradient-text">15+</div>
+              <p class="text-xs text-gray-500 mt-1">Years*</p>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-gray-600">*Figures supplied for this page. Verify current figures before publication.</p>
+        </div>
+
+        <div class="relative reveal">
+          <div class="absolute inset-10 bg-[#00A8FF]/10 blur-[100px] rounded-full"></div>
+          <div class="gradient-border p-[1px] rounded-3xl">
+            <div class="relative glass-card overflow-hidden rounded-3xl">
+              <img
+                src="assets/about-us-vr-classroom.png"
+                alt="Students exploring lessons in a virtual reality learning lab"
+                class="w-full h-[520px] object-cover float"
+                onerror="this.onerror=null;this.src='assets/fotonvr-hero.jpg';"
+              >
+              <div class="absolute top-5 left-5 glass-card rounded-xl px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                  <div>
+                    <p class="text-xs text-gray-400">Learning Environment</p>
+                    <p class="font-semibold text-sm">Immersive VR Lab</p>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute bottom-5 left-5 right-5 glass-card rounded-2xl p-5">
+                <p class="text-xs uppercase tracking-[.25em] text-gray-400">fotonVR</p>
+                <h3 class="mt-1 text-xl font-bold">Explore Lessons in 3D</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LAB -->
+  <section id="lab" class="relative py-24">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div class="reveal">
+          <div class="gradient-border p-[1px]">
+            <div class="image-container glass-card">
+              <img
+                src="assets/fotonvr-hero.jpg"
+                alt="VR learning equipment for a school classroom"
+                class="w-full h-[470px] object-cover"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#35C7FF] font-semibold">
+            <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>The Lab
+          </div>
+          <h2 class="mt-5 text-4xl md:text-5xl font-black leading-tight">
+            What Is a <span class="gradient-text">fotonVR Lab?</span>
+          </h2>
+          <p class="mt-6 text-gray-400 text-lg leading-relaxed">
+            A fotonVR Lab is a VR-based learning setup schools use alongside regular teaching. Students wear a headset and interact with 3D simulations of topics from their syllabus.
+          </p>
+          <p class="mt-5 text-gray-400 leading-relaxed">
+            Instead of relying only on printed materials and diagrams, students can explore concepts through immersive visual experiences.
+          </p>
+
+          <div class="mt-9 grid sm:grid-cols-3 gap-4">
+            <div class="glass-card rounded-2xl p-5 glow-blue">
+              <div class="text-2xl font-black gradient-text">1,200+</div>
+              <div class="mt-2 text-sm text-gray-400">Schools*</div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 glow-red">
+              <div class="text-2xl font-black gradient-text">1.5M+</div>
+              <div class="mt-2 text-sm text-gray-400">Students Reached*</div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 glow-blue">
+              <div class="text-2xl font-black gradient-text">15+</div>
+              <div class="mt-2 text-sm text-gray-400">Years*</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section class="relative py-24 grid-bg">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#FF4565] font-semibold">
+            <span class="w-2 h-2 rounded-full bg-[#E60023]"></span>The Challenge
+          </div>
+          <h2 class="mt-5 text-4xl md:text-5xl font-black leading-tight">
+            Where Textbooks <span class="gradient-text">Need a Hand</span>
+          </h2>
+          <p class="mt-6 text-gray-400 text-lg leading-relaxed">
+            Textbooks provide a foundation, but some concepts are difficult to grasp without a visual or hands-on learning experience.
+          </p>
+
+          <div class="mt-8 glass-card rounded-3xl p-7">
+            <ul class="space-y-5">
+              <li class="flex gap-4 items-start">
+                <span class="flex-none w-9 h-9 rounded-xl bg-[#E60023]/10 border border-[#E60023]/25 text-[#FF4565] flex items-center justify-center">01</span>
+                <span class="text-gray-300 pt-1">Abstract concepts can be difficult to explain with diagrams alone.</span>
+              </li>
+              <li class="flex gap-4 items-start">
+                <span class="flex-none w-9 h-9 rounded-xl bg-[#00A8FF]/10 border border-[#00A8FF]/25 text-[#35C7FF] flex items-center justify-center">02</span>
+                <span class="text-gray-300 pt-1">Practical experiments may not always be accessible.</span>
+              </li>
+              <li class="flex gap-4 items-start">
+                <span class="flex-none w-9 h-9 rounded-xl bg-[#E60023]/10 border border-[#E60023]/25 text-[#FF4565] flex items-center justify-center">03</span>
+                <span class="text-gray-300 pt-1">Student engagement can dip on complex topics.</span>
+              </li>
+              <li class="flex gap-4 items-start">
+                <span class="flex-none w-9 h-9 rounded-xl bg-[#00A8FF]/10 border border-[#00A8FF]/25 text-[#35C7FF] flex items-center justify-center">04</span>
+                <span class="text-gray-300 pt-1">Visualising space and human anatomy can be challenging.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="gradient-border p-[1px]">
+            <div class="image-container glass-card">
+              <img
+                src="assets/vr-problem.avif"
+                alt="Classroom learning environment"
+                class="w-full h-[470px] object-cover"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="relative py-24">
+    <div class="orb orb-blue pulse"></div>
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div class="reveal order-2 lg:order-1">
+          <div class="gradient-border p-[1px]">
+            <div class="glass-card rounded-3xl overflow-hidden">
+              <img
+                src="assets/Earth.png"
+                alt="Immersive educational visualisation"
+                class="w-full h-[470px] object-contain p-10 float"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[.25em] text-[#35C7FF] font-semibold">
+            <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>The Solution
+          </div>
+          <h2 class="mt-5 text-4xl md:text-5xl font-black leading-tight">
+            How a VR Lab <span class="gradient-text">Helps</span>
+          </h2>
+          <p class="mt-6 text-gray-400 text-lg leading-relaxed">
+            fotonVR gives educators another way to demonstrate concepts through immersive visual experiences, complementing traditional teaching methods.
+          </p>
+
+          <div class="mt-8 glass-card rounded-3xl p-7">
+            <ul class="space-y-4">
+              <li class="flex items-center gap-4">
+                <span class="w-9 h-9 rounded-xl bg-[#00A8FF]/10 text-[#35C7FF] flex items-center justify-center">✓</span>
+                <span class="text-gray-300">Visual and interactive concept exploration</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="w-9 h-9 rounded-xl bg-[#E60023]/10 text-[#FF4565] flex items-center justify-center">✓</span>
+                <span class="text-gray-300">Engaging learning experiences</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="w-9 h-9 rounded-xl bg-[#00A8FF]/10 text-[#35C7FF] flex items-center justify-center">✓</span>
+                <span class="text-gray-300">Curiosity and classroom participation</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="w-9 h-9 rounded-xl bg-[#E60023]/10 text-[#FF4565] flex items-center justify-center">✓</span>
+                <span class="text-gray-300">Experiential learning opportunities</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="w-9 h-9 rounded-xl bg-[#00A8FF]/10 text-[#35C7FF] flex items-center justify-center">✓</span>
+                <span class="text-gray-300">Support for STEM education</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBJECTS -->
+  <section class="relative py-24 grid-bg">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="text-center reveal">
+        <div class="inline-flex items-center gap-3 text-sm uppercase tracking-[.25em] text-[#35C7FF] font-semibold">
+          Curriculum Coverage <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+        </div>
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+          Subjects <span class="gradient-text">Covered</span>
+        </h2>
+        <p class="mt-5 max-w-2xl mx-auto text-gray-400 text-lg">
+          Explore immersive learning experiences across a range of school subjects.
+        </p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🔬</div>
+          <h3 class="mt-4 font-bold text-lg">Physics</h3>
+          <p class="mt-2 text-sm text-gray-400">Explore scientific principles through interactive experiences.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🧪</div>
+          <h3 class="mt-4 font-bold text-lg">Chemistry</h3>
+          <p class="mt-2 text-sm text-gray-400">Visualise chemical concepts and processes in 3D.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🧬</div>
+          <h3 class="mt-4 font-bold text-lg">Biology</h3>
+          <p class="mt-2 text-sm text-gray-400">Explore living systems and biological concepts.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">📐</div>
+          <h3 class="mt-4 font-bold text-lg">Mathematics</h3>
+          <p class="mt-2 text-sm text-gray-400">Make mathematical concepts more visual and engaging.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🏛️</div>
+          <h3 class="mt-4 font-bold text-lg">History</h3>
+          <p class="mt-2 text-sm text-gray-400">Explore historical environments and events.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🌍</div>
+          <h3 class="mt-4 font-bold text-lg">Geography</h3>
+          <p class="mt-2 text-sm text-gray-400">Discover places, environments and geographical concepts.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🌱</div>
+          <h3 class="mt-4 font-bold text-lg">Environmental Science</h3>
+          <p class="mt-2 text-sm text-gray-400">Understand environmental systems and sustainability.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🪐</div>
+          <h3 class="mt-4 font-bold text-lg">Astronomy & Space Science</h3>
+          <p class="mt-2 text-sm text-gray-400">Take students beyond the classroom and into space.</p>
+        </article>
+        <article class="subject-card glass-card rounded-2xl p-6 reveal">
+          <div class="text-3xl">🔭</div>
+          <h3 class="mt-4 font-bold text-lg">General Science</h3>
+          <p class="mt-2 text-sm text-gray-400">Discover science through immersive exploration.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="relative py-24">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="text-center reveal">
+        <div class="inline-flex items-center gap-3 text-sm uppercase tracking-[.25em] text-[#FF4565] font-semibold">
+          See It in Action <span class="w-2 h-2 rounded-full bg-[#E60023]"></span>
+        </div>
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+          A Quick Look Inside <span class="gradient-text">the Lab</span>
+        </h2>
+      </div>
+
+      <div class="mt-12 gradient-border p-[1px] reveal">
+        <div class="glass-card rounded-3xl p-3">
+          <div class="aspect-video rounded-2xl overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/nEnqiRP7A5k"
+              title="fotonVR Lab Overview"
+              class="w-full h-full"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section class="relative py-24 grid-bg">
+    <div class="max-w-5xl mx-auto px-5 text-center">
+      <div class="gradient-border p-[1px] reveal">
+        <div class="glass-card rounded-3xl p-10 md:p-14">
+          <div class="mx-auto w-16 h-16 rounded-2xl bg-[#00A8FF]/10 border border-[#00A8FF]/30 flex items-center justify-center">
+            <span class="text-3xl text-[#35C7FF]">✓</span>
+          </div>
+
+          <h2 class="mt-7 text-3xl md:text-4xl font-black">
+            Delivered by <span class="gradient-text">ATGNEXA</span>
+          </h2>
+
+          <p class="mt-5 max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+            ATGNEXA brings the fotonVR platform to your school, with support for installation, teacher onboarding and ongoing assistance.
+          </p>
+
+          <div class="mt-8 inline-flex flex-wrap justify-center items-center gap-3 glass-card px-5 py-3 rounded-full">
+            <span class="w-7 h-7 rounded-full bg-gradient-to-br from-[#00A8FF] to-[#E60023] flex items-center justify-center text-xs">✓</span>
+            <span class="text-sm text-gray-300">Authorized Channel Partner of</span>
+            <a href="https://fotonvr.com/" target="_blank" rel="noopener noreferrer" class="font-bold text-white hover:text-[#35C7FF] transition">fotonVR ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative py-24">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="text-center reveal">
+        <div class="inline-flex items-center gap-3 text-sm uppercase tracking-[.25em] text-[#35C7FF] font-semibold">
+          FAQ <span class="w-2 h-2 rounded-full bg-[#00A8FF]"></span>
+        </div>
+        <h2 class="mt-5 text-4xl md:text-5xl font-black">
+          Common Questions About <span class="gradient-text">Immersive Learning</span>
+        </h2>
+      </div>
+
+      <div class="mt-12 space-y-4">
+        <details class="reveal">
+          <summary>What is a VR lab for schools?</summary>
+          <p>A learning setup where students use VR headsets to explore lessons through interactive 3D experiences alongside regular classroom teaching.</p>
+        </details>
+        <details class="reveal">
+          <summary>Do teachers need technical training?</summary>
+          <p>Teacher onboarding can help educators become comfortable operating the learning setup and integrating it into classroom activities. Ask ATGNEXA about available training.</p>
+        </details>
+        <details class="reveal">
+          <summary>What subjects are covered?</summary>
+          <p>Potential subject areas include Physics, Chemistry, Biology, Mathematics, Geography, History and other science topics. Available content depends on the platform's current library.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is the content suitable for school-age students?</summary>
+          <p>Schools should review the available content, age suitability, supervision requirements and usage guidance with the provider before classroom use.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 hero-bg"></div>
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="gradient-border p-[1px] reveal">
+        <div class="glass-card rounded-3xl p-10 md:p-16 text-center">
+          <p class="text-sm uppercase tracking-[.25em] text-gray-400">Ready to Explore?</p>
+          <h2 class="mt-5 text-4xl md:text-6xl font-black">
+            Bring a VR Learning Lab
+            <span class="gradient-text block">to Your School</span>
+          </h2>
+          <p class="mt-6 max-w-2xl mx-auto text-gray-400 text-lg">
+            Request a demo and explore how immersive learning could fit into your classroom.
+          </p>
+          <div class="mt-9 flex justify-center flex-wrap gap-4">
+            <a href="mailto:sales@avinya-group.com?subject=VR%20Learning%20Lab%20Demo%20Request" class="primary-btn px-7 py-3.5 rounded-xl font-semibold">Book a Free Demo</a>
+            <a href="contact.html" class="secondary-btn px-7 py-3.5 rounded-xl font-semibold">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 bg-[#080B12]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img src="assets/logo.png" alt="Avinya Techno Group logo" class="h-9 w-auto" onerror="this.style.display='none'">
+          <span class="text-2xl font-black gradient-text">ATGNEXA</span>
+        </a>
+        <p class="mt-5 text-gray-400 text-sm leading-relaxed">
+          A technology store by Avinya Techno Group L.L.P — Robotics, VR, AI and STEM solutions.
+        </p>
+        <p class="mt-5 text-sm font-semibold text-gray-400">Innovate · Secure · Automate · Connect</p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white">Contact</h4>
+        <div class="mt-5 space-y-4 text-sm text-gray-400">
+          <p>2nd Floor, Hiranya Complex,<br>Opp. Pragathi Hospital,<br>Bolwar, Puttur,<br>Dakshina Kannada,<br>Karnataka – 574201</p>
+          <p>✉️ <a href="mailto:sales@avinya-group.com" class="hover:text-white transition">sales@avinya-group.com</a></p>
+          <p>📞 <a href="tel:+917022794801" class="hover:text-white transition">+91 70227 94801</a></p>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white">Quick Links</h4>
+        <div class="mt-5 space-y-3 text-sm">
+          <a href="index.html" class="block text-gray-400 hover:text-[#35C7FF] transition">Home</a>
+          <a href="shop.html" class="block text-gray-400 hover:text-[#35C7FF] transition">Shop</a>
+          <a href="robotics.html" class="block text-gray-400 hover:text-[#35C7FF] transition">STEM & Robotics</a>
+          <a href="fotonvr.html" class="block text-gray-400 hover:text-[#35C7FF] transition">fotonVR</a>
+          <a href="it-accessories.html" class="block text-gray-400 hover:text-[#35C7FF] transition">IT Accessories</a>
+          <a href="contact.html" class="block text-gray-400 hover:text-[#35C7FF] transition">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white">Business Verticals</h4>
+        <div class="mt-5 space-y-3 text-sm">
+          <a href="https://www.avinya-group.com" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-[#35C7FF] transition">Avinya Technologies ↗</a>
+          <a href="https://www.avinya-group.com/ai-and-robotics" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-[#35C7FF] transition">AI & Robotics ↗</a>
+          <a href="https://fotonvr.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-[#35C7FF] transition">fotonVR ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-gray-500">
+      <p>© <span id="currentYear">2026</span> Avinya Techno Group L.L.P. — ATGNEXA</p>
+      <p>A technology store by Avinya Techno Group</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a
+  href="https://wa.me/917022794801"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with ATGNEXA on WhatsApp"
+  class="whatsapp fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/20"
+>
+  <svg viewBox="0 0 32 32" width="27" height="27" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.697 4.61 1.902 6.484L4 29l7.72-1.855A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16.001 3zm.001 21.75c-1.89 0-3.66-.523-5.17-1.43l-.371-.22-4.586 1.102 1.127-4.47-.242-.386A9.71 9.71 0 0 1 5.25 15c0-5.937 4.813-10.75 10.75-10.75S26.75 9.063 26.75 15 21.938 24.75 16.001 24.75zm5.598-8.06c-.307-.154-1.815-.895-2.096-.997-.281-.102-.486-.153-.69.154-.204.307-.792.997-.972 1.202-.179.204-.358.23-.665.077-.307-.154-1.297-.478-2.47-1.523-.913-.814-1.53-1.82-1.71-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.384-.026-.537-.077-.154-.69-1.664-.946-2.28-.249-.599-.502-.518-.69-.527-.179-.008-.384-.01-.588-.01-.204 0-.537.077-.818.384-.281.307-1.073 1.049-1.073 2.559 0 1.51 1.099 2.969 1.252 3.174.153.204 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.646.734.233 1.402.2 1.93.122.589-.088 1.815-.742 2.071-1.459.256-.717.256-1.331.179-1.459-.077-.128-.281-.204-.588-.358z"/>
+  </svg>
+</a>
+
+<script>
+  // Mobile navigation
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuButton.innerHTML = isOpen
+        ? '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>'
+        : '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.innerHTML = '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+      });
+    });
+  }
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(element => observer.observe(element));
+  } else {
+    revealElements.forEach(element => element.classList.add("show"));
+  }
+
+  // Footer year
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
